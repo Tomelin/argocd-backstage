@@ -119,8 +119,8 @@ spec:
       if: ${{ parameters.enabledCache }}
       action: fetch:plain
       input:
-        targetPath: ./README.tmp
-        url: https://github.com/Tomelin/argocd-backstage/blob/main/README.md
+        targetPath: ./community/tmp
+        url: https://github.com/Tomelin/argocd-backstage/blob/main
 
 
     - id: publish
