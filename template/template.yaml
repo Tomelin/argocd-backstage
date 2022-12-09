@@ -111,7 +111,16 @@ spec:
       if: ${{ parameters.enabledDB }}
       action: fetch:plain
       input:
-        url: https://github.com/backstage/community/blob/main/backstage-community-sessions/README.md
+        targetPath: ./community
+        url: https://github.com/backstage/community/blob/main/backstage-community-sessions
+    
+    - id: fetch-cache
+      name: Fetch Cache
+      if: ${{ parameters.enabledCache }}
+      action: fetch:plain
+      input:
+        targetPath: ./community
+        url: https://github.com/backstage/community/tree/main/sigs
 
 
     - id: publish
