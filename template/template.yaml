@@ -28,6 +28,13 @@ spec:
           type: string
           description: Project name in ArgoCD
           ui:field: ProjectName
+        use_cobra_cmd:
+          title: Enable Cobra CLI Tools (https://github.com/spf13/cobra)
+          type: string
+          enum:
+          - "y"
+          - "n"
+          default: "y"
         description:
           title: Description
           type: string
