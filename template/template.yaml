@@ -43,15 +43,15 @@ spec:
         project_name:
           title: Project Name
           type: string
-          description: Help others understand what this website is for.
+          description: Project name to create in ArgoCD.
         application_name:
-          title: Project Name
+          title: Application Name
           type: string
-          description: Help others understand what this website is for.
+          description: Name of application to deployed in AKS and inside of ArgoCD project.
         namespace:
-          title: Project Name
+          title: Namespace
           type: string
-          description: Help others understand what this website is for.
+          description: Namespace for deployed the application.
     - title: Components Azure Resources
       properties:
         enabledDB:
@@ -66,7 +66,7 @@ spec:
           default: false
         enabledQueue:
           title: Enable Message Queue
-          description: Enable Queue in your application.
+          description: Help others understand what this website is for.
           type: boolean
           default: false
         enabledAKV:
