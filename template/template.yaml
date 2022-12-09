@@ -16,12 +16,18 @@ spec:
       required:
         - component_id
         - owner
+        - project_name
       properties:
         component_id:
           title: Name
           type: string
           description: Unique name of the component
           ui:field: EntityNamePicker
+        project_name:
+          title: Name
+          type: string
+          description: Project name in ArgoCD
+          ui:field: ProjectName
         description:
           title: Description
           type: string
@@ -55,6 +61,7 @@ spec:
           - .github/workflows/*
         values:
           component_id: ${{ parameters.component_id }}
+          project_name: ${{ parameters.project_name }}
           description: ${{ parameters.description }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
