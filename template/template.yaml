@@ -26,9 +26,6 @@ spec:
           title: Description
           type: string
           description: Help others understand what this website is for.
-          ui:autofocus: true
-          ui:options:
-            rows: 5
         owner:
           title: Owner
           type: string
@@ -42,6 +39,10 @@ spec:
         - project_name
         - owner
       properties:
+        description:
+          title: Description
+          type: string
+          description: Help others understand what this website is for.
         project_name:
           title: Project Name
           type: string
