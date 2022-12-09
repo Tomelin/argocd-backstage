@@ -43,15 +43,15 @@ spec:
         project_name:
           title: Project Name
           type: string
-          description: Project name to create in ArgoCD.
+          description: Project name to create inside ArgoCD.
         application_name:
           title: Application Name
           type: string
-          description: Name of application to deployed in AKS and inside of ArgoCD project.
+          description: Application name to deploy in AKS and inside ArgoCD project.
         namespace:
           title: Namespace
           type: string
-          description: Namespace for deployed the application.
+          description: Namespace for deploy the application in AKS (Azure Kubernetes).
     - title: Components Azure Resources
       properties:
         enabledDB:
