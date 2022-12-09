@@ -43,13 +43,17 @@ spec:
           title: Description
           type: string
           description: Help others understand what this website is for.
+        project_name2:
+          title: ProjectName
+          type: string
+          description: Help others understand what this website is for.
         project_name:
-          title: Project Name
+          title: ProjectName
           type: string
           description: Project name in ArgoCD
           ui:field: ProjectName
         application_name:
-          title: Application Name
+          title: ApplicationName
           type: string
           description: Application name in ArgoCD
           ui:field: ApplicationName
