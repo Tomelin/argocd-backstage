@@ -5,16 +5,11 @@ bases:
 - https://github.com/Tomelin/argocd-appProject/common
 
 patches:
-- target:
-    kind: AppProject
-    name: .*
-  patch: |-
-    - op: replace
-      path: /metadata/name
-      value: newproject
-project: ${{values.project_name | dump}}
+- path: ./argocd/appProject.yaml
+- path: ./argocd/application.yaml
 
-echo "Hi my name is ${{ values.name }}, and you can fine me at ${{ values.url }}!"
-{% if values.enabledDB %}
-echo "You have enabled your database!"
-{% endif %}
+
+# echo "Hi my name is ${{ values.name }}, and you can fine me at ${{ values.url }}!"
+# {% if values.enabledDB %}
+# echo "You have enabled your database!"
+# {% endif %}
