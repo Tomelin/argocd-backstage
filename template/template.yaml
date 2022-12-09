@@ -102,6 +102,7 @@ spec:
           component_id: ${{ parameters.component_id }}
           enabledDB: ${{ parameters.enabledDB }}
           project_name: ${{ parameters.project_name }}
+          namespace: ${{ parameters.namespace }}
           description: ${{ parameters.description }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
