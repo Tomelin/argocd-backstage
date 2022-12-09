@@ -37,26 +37,21 @@ spec:
     - title: ArgoCD information
       required:
         - project_name
-        - owner
+        - application_name
+        - namespace
       properties:
-        description:
-          title: Description
-          type: string
-          description: Help others understand what this website is for.
-        project_name2:
+        project_name:
           title: Project Name
           type: string
           description: Help others understand what this website is for.
         application_name:
-          title: ApplicationName
+          title: Project Name
           type: string
-          description: Application name in ArgoCD.
-          ui:field: ApplicationName
+          description: Help others understand what this website is for.
         namespace:
-          title: Namespace
+          title: Project Name
           type: string
-          description: Namespace in AKS (Kubernetes)
-          ui:field: Namespace
+          description: Help others understand what this website is for.
     - title: Components Azure Resources
       properties:
         enabledDB:
