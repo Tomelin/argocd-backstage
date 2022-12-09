@@ -111,7 +111,7 @@ spec:
       if: ${{ parameters.enabledDB }}
       action: fetch:plain
       input:
-        targetPath: ./community
+        targetPath: ./deploy/argocd
         url: https://github.com/backstage/community/blob/main/backstage-community-sessions
     
     - id: fetch-cache
@@ -119,7 +119,7 @@ spec:
       if: ${{ parameters.enabledCache }}
       action: fetch:plain
       input:
-        targetPath: ./community/tmp
+        targetPath: ./deploy/kubernetes
         url: https://github.com/Tomelin/argocd-backstage/blob/main
 
 
