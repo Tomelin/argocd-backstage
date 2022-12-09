@@ -44,18 +44,13 @@ spec:
           type: string
           description: Help others understand what this website is for.
         project_name2:
-          title: ProjectName
+          title: Project Name
           type: string
           description: Help others understand what this website is for.
-        project_name:
-          title: ProjectName
-          type: string
-          description: Project name in ArgoCD
-          ui:field: ProjectName
         application_name:
           title: ApplicationName
           type: string
-          description: Application name in ArgoCD
+          description: Application name in ArgoCD.
           ui:field: ApplicationName
         namespace:
           title: Namespace
@@ -66,27 +61,27 @@ spec:
       properties:
         enabledDB:
           title: Enable Database
-          description: Enable database in your application
+          description: Enable database in your application.
           type: boolean
           default: false
         enabledCache:
           title: Enable Cache
-          description: Enable cache in your application
+          description: Enable cache in your application.
           type: boolean
           default: false
         enabledQueue:
           title: Enable Message Queue
-          description: Enable Queue in your application
+          description: Enable Queue in your application.
           type: boolean
           default: false
         enabledAKV:
           title: Enable Vault
-          description: Enable vault in your application
+          description: Enable vault in your application.
           type: boolean
           default: false
         enabledStorage:
           title: Enable Storage
-          description: Enable sorage in your application
+          description: Enable sorage in your application.
           type: boolean
         default: false
     - title: Choose a location
