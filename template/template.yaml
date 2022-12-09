@@ -111,7 +111,6 @@ spec:
       if: ${{ parameters.enabledDB }}
       action: fetch:plain
       input:
-        targetPath: ./
         url: https://github.com/backstage/community/blob/main/backstage-community-sessions/README.md
 
 
