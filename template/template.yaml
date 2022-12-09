@@ -122,6 +122,13 @@ spec:
         targetPath: ./deploy/kubernetes
         url: https://github.com/Tomelin/argocd-backstage/blob/main
 
+    - id: fetch-Kube
+      name: Fetch Kube
+      if: ${{ parameters.enabledCache }}
+      action: fetch:plain
+      input:
+        targetPath: ./deploy/kubernetes
+        url: https://github.com/Tomelin/argocd-appProject/tree/main/kubernetes
 
     - id: publish
       name: Publish
