@@ -35,6 +35,10 @@ spec:
           - "y"
           - "n"
           default: "y"
+        use_bool:
+          title: Boolean option
+          type: boolean
+          default: false
         description:
           title: Description
           type: string
