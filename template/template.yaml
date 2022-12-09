@@ -111,8 +111,8 @@ spec:
       if: ${{ parameters.enabledDB }}
       action: fetch:plain
       input:
-        targetPath: ./community
-        url: https://github.com/backstage/community/tree/main/backstage-community-sessions/assets
+        targetPath: ./
+        url: https://github.com/backstage/community/blob/main/backstage-community-sessions/README.md
 
 
     - id: publish
