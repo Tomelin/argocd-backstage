@@ -4,6 +4,14 @@ kind: Kustomization
 bases:
 - https://github.com/Tomelin/argocd-appProject/common
 
+patches:
+- target:
+    kind: AppProject
+    name: .*
+  patch: |-
+    - op: replace
+      path: /metadata/name
+      value: newproject
 project: ${{values.project_name | dump}}
 
 echo "Hi my name is ${{ values.name }}, and you can fine me at ${{ values.url }}!"
