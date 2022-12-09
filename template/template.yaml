@@ -24,7 +24,7 @@ spec:
           description: Unique name of the component
           ui:field: EntityNamePicker
         project_name:
-          title: Name
+          title: Project Name
           type: string
           description: Project name in ArgoCD
           ui:field: ProjectName
