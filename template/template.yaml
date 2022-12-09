@@ -78,7 +78,7 @@ spec:
           title: Enable Storage
           description: Enable sorage in your application.
           type: boolean
-        default: false
+          default: false
     - title: Choose a location
       required:
         - repoUrl
