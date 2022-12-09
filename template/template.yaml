@@ -39,6 +39,9 @@ spec:
           title: Description
           type: string
           description: Help others understand what this website is for.
+          ui:autofocus: true
+          ui:options:
+            rows: 5
         owner:
           title: Owner
           type: string
@@ -86,7 +89,7 @@ spec:
       action: catalog:register
       input:
         repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
-        catalogInfoPath: "/kustomization.yaml"
+        catalogInfoPath: "/catalog-info.yaml"
 
   output:
     links:
