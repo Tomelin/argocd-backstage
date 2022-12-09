@@ -1,15 +1,15 @@
 apiVersion: backstage.io/v1alpha1
 kind: Template
 metadata:
-  name: golang-starter
-  title: Golang Microservice
+  name: golang-tomelin
+  title: Golang Microservice Tomelin
   description: Create a Golang repo with this template built by members of the Go community
   tags:
     - experimental
     - go
 spec:
-  owner: web@example.com
-  templater: cookiecutter
+  owner: rafael.tomelin@pagonxt.com
+  templater: gocookiecutter
   type: service
   path: "."
   schema:
