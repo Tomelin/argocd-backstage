@@ -52,7 +52,7 @@ spec:
           title: Namespace
           type: string
           description: Namespace for deploy the application in AKS (Azure Kubernetes).
-    - title: Components Azure Resources
+    - title: Azure Resources
       properties:
         enabledDB:
           title: Enable Database
