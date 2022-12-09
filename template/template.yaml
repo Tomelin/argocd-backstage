@@ -41,46 +41,48 @@ spec:
       required:
         - project_name
         - owner
-      project_name:
-        title: Project Name
-        type: string
-        description: Project name in ArgoCD
-        ui:field: ProjectName
-      application_name:
-        title: Application Name
-        type: string
-        description: Application name in ArgoCD
-        ui:field: ApplicationName
-      namespace:
-        title: Namespace
-        type: string
-        description: Namespace in AKS (Kubernetes)
-        ui:field: Namespace
+      properties:
+        project_name:
+          title: Project Name
+          type: string
+          description: Project name in ArgoCD
+          ui:field: ProjectName
+        application_name:
+          title: Application Name
+          type: string
+          description: Application name in ArgoCD
+          ui:field: ApplicationName
+        namespace:
+          title: Namespace
+          type: string
+          description: Namespace in AKS (Kubernetes)
+          ui:field: Namespace
     - title: Components Azure Resources
-      enabledDB:
-        title: Enable Database
-        description: Enable database in your application
-        type: boolean
-        default: false
-      enabledCache:
-        title: Enable Cache
-        description: Enable cache in your application
-        type: boolean
-        default: false
-      enabledQueue:
-        title: Enable Message Queue
-        description: Enable Queue in your application
-        type: boolean
-        default: false
-      enabledAKV:
-        title: Enable Vault
-        description: Enable vault in your application
-        type: boolean
-        default: false
-      enabledStorage:
-        title: Enable Storage
-        description: Enable sorage in your application
-        type: boolean
+      properties:
+        enabledDB:
+          title: Enable Database
+          description: Enable database in your application
+          type: boolean
+          default: false
+        enabledCache:
+          title: Enable Cache
+          description: Enable cache in your application
+          type: boolean
+          default: false
+        enabledQueue:
+          title: Enable Message Queue
+          description: Enable Queue in your application
+          type: boolean
+          default: false
+        enabledAKV:
+          title: Enable Vault
+          description: Enable vault in your application
+          type: boolean
+          default: false
+        enabledStorage:
+          title: Enable Storage
+          description: Enable sorage in your application
+          type: boolean
         default: false
     - title: Choose a location
       required:
