@@ -7,8 +7,9 @@ metadata:
   tags:
     - recommended
     - react
+    - temp
 spec:
-  owner: web@example.com
+  owner: rafael.tomelin@pagonxt.com
   type: website
   parameters:
     - title: Provide some simple information
