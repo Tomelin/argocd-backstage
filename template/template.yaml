@@ -12,46 +12,46 @@ spec:
   owner: rafael.tomelin@pagonxt.com
   type: website
   parameters:
-    - title: Provide some simple information
-      required:
-        - component_id
-        - owner
-      properties:
-        component_id:
-          title: Name
-          type: string
-          description: Unique name of the component
-          ui:field: EntityNamePicker
-        description:
-          title: Description
-          type: string
-          description: Help others understand what this website is for.
-        owner:
-          title: Owner
-          type: string
-          description: Owner of the component
-          ui:field: OwnerPicker
-          ui:options:
-            allowedKinds:
-              - Group
-    - title: ArgoCD information
-      required:
-        - project_name
-        - application_name
-        - namespace
-      properties:
-        project_name:
-          title: Project Name
-          type: string
-          description: Project name to create inside ArgoCD.
-        application_name:
-          title: Application Name
-          type: string
-          description: Application name to deploy in AKS and inside ArgoCD project.
-        namespace:
-          title: Namespace
-          type: string
-          description: Namespace for deploy the application in AKS (Azure Kubernetes).
+    # - title: Provide some simple information
+    #   required:
+    #     - component_id
+    #     - owner
+    #   properties:
+    #     component_id:
+    #       title: Name
+    #       type: string
+    #       description: Unique name of the component
+    #       ui:field: EntityNamePicker
+    #     description:
+    #       title: Description
+    #       type: string
+    #       description: Help others understand what this website is for.
+    #     owner:
+    #       title: Owner
+    #       type: string
+    #       description: Owner of the component
+    #       ui:field: OwnerPicker
+    #       ui:options:
+    #         allowedKinds:
+    #           - Group
+    # - title: ArgoCD information
+    #   required:
+    #     - project_name
+    #     - application_name
+    #     - namespace
+    #   properties:
+    #     project_name:
+    #       title: Project Name
+    #       type: string
+    #       description: Project name to create inside ArgoCD.
+    #     application_name:
+    #       title: Application Name
+    #       type: string
+    #       description: Application name to deploy in AKS and inside ArgoCD project.
+    #     namespace:
+    #       title: Namespace
+    #       type: string
+    #       description: Namespace for deploy the application in AKS (Azure Kubernetes).
     - title: Azure Resources
       properties:
         enabledDB:
