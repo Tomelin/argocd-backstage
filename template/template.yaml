@@ -145,7 +145,7 @@ spec:
       input:
         url: ./deploy/template2
         values:
-          list: '{{parameters.should-be-list}}'
+          list: '{{ json parameters.should-be-list }}'
 
     - id: publish
       name: Publish
