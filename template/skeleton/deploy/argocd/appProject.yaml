@@ -10,4 +10,29 @@ spec:
   {% endif %}
   destinations:
   - namespace: ${{values.namespace | dump}}
+---
+ {% for item in values %}
+    Value: {{ item }}
+  {% endfor %}  
+  
+   {% for idx in values %}
+    Value: {{ idx }}
+    index: {{ idx.index }}
+  {% endfor %}  
 
+  {% for row in values %}
+  value => {{ row }}
+  value => {{ row.index }}
+
+    {# new row #}
+    <tr>
+    {% set rowloop = loop %}
+    {% for cell in row %}
+      <td>
+          row (rowloop.index):{{ rowloop.index }}
+          column (loop.index): {{ loop.index }}
+          cell: {{ cell }}
+      </td>
+    {% endfor %}
+    </tr>
+  {% endfor %}
