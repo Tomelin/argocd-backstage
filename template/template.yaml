@@ -64,8 +64,7 @@ spec:
               oneOf:
                 - properties:
                     technology:
-                      enum:
-                        - true
+                      boolean: true
                     java version:
                       type: "string"
                       enum:
@@ -95,12 +94,11 @@ spec:
       required: []
       properties:
         technology:
-          type: string
-          enum:
-            - java
-            # - dotnet
-            - javascript
-            - python
+          type: boolean
+          default: false
+
+            # - javascript
+            # - python
 
       # Creating a dependency based on the selected technology above
       dependencies:
@@ -109,7 +107,7 @@ spec:
             - properties:
                 technology:
                   enum:
-                    - java
+                    - true
                 java version:
                   type: "string"
                   enum:
