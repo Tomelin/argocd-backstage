@@ -90,8 +90,32 @@ spec:
         enabledCache:
           title: Enable Cache
           description: Help others understand what this website is for.
-          type: boolean
-          default: false
+          type: object
+          properties:
+            cache:
+              type: boolean
+              default: false
+          required:
+          - cache
+          dependencies:
+            cache:
+              oneOf:
+              - properties:
+                  cache:
+                    enum:
+                    - true
+                  What is databse?:
+                    type: string
+                    enum:
+                      - PostgreSQL
+                      - MySQL
+                      - Microsoft SQL Server
+                required:
+                - What is databse?
+
+
+
+
         enabledQueue:
           title: Enable Message Queue
           description: Help others understand what this website is for.
