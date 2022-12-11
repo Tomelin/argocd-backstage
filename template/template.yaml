@@ -107,12 +107,25 @@ spec:
                   What is databse?:
                     type: string
                     enum:
-                      - None
                       - PostgreSQL
                       - MySQL
                       - Microsoft SQL Server
                 required:
                 - What is databse?
+                dependencies:
+                  version:
+                    oneOf:
+                      - properties: 
+                          postgressql:
+                            enum:
+                              - PostgreSQL
+                          What is version of PostgreSQL?:
+                            type: "string"
+                            enum:
+                              - 10
+                              - 11
+                        required:
+                          - What is databse?
 
 
 
