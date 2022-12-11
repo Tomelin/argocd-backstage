@@ -2,15 +2,15 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: tomelin-template
-  title: Tomelin SSR Template
-  description: Create a website powered with Next.js
+  title: Tomelin Loop Template
+  description: Template with loop
   tags:
     - recommended
     - react
     - temp
 spec:
   owner: rafael.tomelin@pagonxt.com
-  type: website
+  type: service
   parameters:
     - title: Provide some simple information
       required:
