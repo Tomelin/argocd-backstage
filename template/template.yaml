@@ -56,8 +56,7 @@ spec:
       properties:
         enabledDB:
           title: Enable Database
-          type: boolean
-          default: false
+          type: object
           properties:
             Do you have any pets?:
               type: string
