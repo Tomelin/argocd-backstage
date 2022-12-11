@@ -64,7 +64,7 @@ spec:
               oneOf:
                 - properties:
                     enabledDB:
-                      enum: true
+                      boolean: true
                     java version:
                       type: "string"
                       enum:
