@@ -79,6 +79,14 @@ spec:
           description: Enable sorage in your application.
           type: boolean
           default: false
+    - title: Values
+      properties:
+       should-be-list:
+          title: This is a title and is huge
+          description: "this is a description you can't see"
+          type: array
+          items:
+            type: string
     - title: Choose a location
       required:
         - repoUrl
@@ -130,6 +138,14 @@ spec:
       input:
         targetPath: ./deploy/kubernetes
         url: https://github.com/Tomelin/argocd-appProject/tree/main/kubernetes
+
+    - id: fetch-template
+      name: Fetch Template
+      action: fetch:template
+      input:
+        url: ./deploy/template2
+        values:
+          list: '{{parameters.should-be-list}}'
 
     - id: publish
       name: Publish
