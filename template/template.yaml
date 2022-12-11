@@ -55,78 +55,89 @@ spec:
     - title: Azure Resources
       properties:
         enabledDB:
-          title: Enable Database
+          title: Enable Databse
+          description: Help others understand what this website is for.
           type: object
           properties:
-            Do you have any pets?:
+            database:
               type: boolean
               default: false
           required:
-          - Do you have any pets?
+          - database
           dependencies:
-            Do you have any pets?:
+            database:
               oneOf:
-              - properties:
-                  Do you have any pets?:
-                    enum:
-                    - false
-              - properties:
-                  Do you have any pets?:
-                    enum:
-                    - true
-                  How old is your pet?:
-                    type: number
-                required:
-                - How old is your pet?
-              - properties:
-                  Do you have any pets?:
-                    enum:
-                    - 'Yes: More than one'
-                  Do you want to get rid of any?:
-                    type: boolean
-                required:
-                - Do you want to get rid of any?
+                - properties:
+                    database:
+                      enum:
+                        - true
+                    database version:
+                      type: "string"
+                      enum:
+                        - PostgresSQL
+                        - MySQL
+                  dependencies:
+                    database version:
+                      oneOf:
+                        - properties: 
+                            database version:
+                              enum:
+                                - PostgresSQL
+                            any other option:
+                              type: "string"
+                              enum:
+                                - option1
+                                - java build x.y.z
+                        - properties: 
+                            database version:
+                              enum:
+                                - MySQL
+                            any other option:
+                              type: "string"
+                              enum:
+                                - 9
+                                - 10
+                  required: 
+                    - database version
 
         enabledCache:
           title: Enable Cache
           description: Help others understand what this website is for.
           type: object
           properties:
-            cache:
+            queue:
               type: boolean
               default: false
           required:
-          - cache
+          - queue
           dependencies:
-            cache:
+            queue:
               oneOf:
-              - properties:
-                  cache:
-                    enum:
-                    - true
-                  What is databse?:
-                    type: string
-                    enum:
-                      - PostgreSQL
-                      - MySQL
-                      - Microsoft SQL Server
-                required:
-                - What is databse?
-                dependencies:
-                  version:
-                    oneOf:
-                      - properties: 
-                          postgressql:
-                            enum:
-                              - PostgreSQL
-                          What is version of PostgreSQL?:
-                            type: "string"
-                            enum:
-                              - 10
-                              - 11
-                        required:
-                          - What is databse?
+                - properties:
+                    queue:
+                      enum:
+                        - true
+                    java version:
+                      type: "string"
+                      enum:
+                        - Service Bus
+                        - Kafka
 
+                  # Creating a dependency based on the selected java version (not necessary, just for example)
+                  dependencies:
+                    java version:
+                      oneOf:
+                        - properties: 
+                            java version:
+                              enum:
+                                - java8
+                            any other option:
+                              type: "string"
+                              enum:
+                                - option1
+                                - java build x.y.z
+                  required: 
+                    - java version
 
 
 
@@ -150,8 +161,8 @@ spec:
                     java version:
                       type: "string"
                       enum:
-                        - java8
-                        - java11
+                        - Service Bus
+                        - Kafka
 
                   # Creating a dependency based on the selected java version (not necessary, just for example)
                   dependencies:
