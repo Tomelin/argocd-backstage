@@ -59,6 +59,18 @@ spec:
           description: Enable database in your application.
           type: boolean
           default: false
+          dependencies:
+            enabledDB:
+              oneOf:
+                - properties:
+                    technology:
+                      enum:
+                        - true
+                    java version:
+                      type: "string"
+                      enum:
+                        - java8
+                        - java11
         enabledCache:
           title: Enable Cache
           description: Enable cache in your application.
