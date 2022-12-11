@@ -107,9 +107,11 @@ spec:
                   What is databse?:
                     type: string
                     enum:
+                      - None
                       - PostgreSQL
                       - MySQL
                       - Microsoft SQL Server
+                    default: None
                 required:
                 - What is databse?
 
