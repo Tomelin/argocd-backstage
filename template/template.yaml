@@ -54,9 +54,10 @@ spec:
           description: Namespace for deploy the application in AKS (Azure Kubernetes).
     - title: Azure Resources
       properties:
-        person:
-          title: Person
-          type: object
+        enabledDB:
+          title: Enable Database
+          type: boolean
+          default: false
           properties:
             Do you have any pets?:
               type: string
