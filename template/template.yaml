@@ -54,13 +54,25 @@ spec:
           description: Namespace for deploy the application in AKS (Azure Kubernetes).
     - title: Azure Resources
       properties:
-        # enabledDB:
-        #   title: Enable Database
-        #   description: Enable database in your application.
-        #   type: boolean
-        #   default: false
-        
         enabledDB:
+          title: Enable Database
+          description: Enable database in your application.
+          type: boolean
+          default: false
+      dependencies:
+        enabledDB:
+          oneOf:
+            - properties:
+                enabledDB:
+                  enum:
+                    - true
+                java version:
+                  type: "string"
+                  enum:
+                    - Postgres
+                    - MSSQL
+                    - MySQL
+        enabledCache:
           oneOf:
             - properties:
                 enabledDB:
@@ -71,11 +83,6 @@ spec:
                   enum:
                     - java8
                     - java11
-        enabledCache:
-          title: Enable Cache
-          description: Enable cache in your application.
-          type: boolean
-          default: false
         enabledQueue:
           title: Enable Message Queue
           description: Help others understand what this website is for.
