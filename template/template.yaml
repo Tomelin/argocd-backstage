@@ -79,15 +79,46 @@ spec:
           description: Enable sorage in your application.
           type: boolean
           default: false
-    - title: Values
-      if: ${{ parameters.enabledCache }}
+    - title: Creating a API
+      required: []
       properties:
-       should-be-list:
-          title: This is a title and is huge
-          description: "this is a description you can't see"
-          type: array
-          items:
-            type: string
+        technology:
+          type: string
+          enum:
+            - java
+            # - dotnet
+            - javascript
+            - python
+
+      # Creating a dependency based on the selected technology above
+      dependencies:
+        technology:
+          oneOf:
+            - properties:
+                technology:
+                  enum:
+                    - java
+                java version:
+                  type: "string"
+                  enum:
+                    - java8
+                    - java11
+
+              # Creating a dependency based on the selected java version (not necessary, just for example)
+              dependencies:
+                java version:
+                  oneOf:
+                    - properties: 
+                        java version:
+                          enum:
+                            - java8
+                        any other option:
+                          type: "string"
+                          enum:
+                            - option1
+                            - java build x.y.z
+              required: 
+                - java version
     - title: Choose a location
       required:
         - repoUrl
@@ -115,7 +146,6 @@ spec:
           description: ${{ parameters.description }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
-          should-be-list: ${{ parameters.should-be-list }}
 
     - id: fetch-docs
       name: Fetch Docs
@@ -140,14 +170,6 @@ spec:
       input:
         targetPath: ./deploy/kubernetes
         url: https://github.com/Tomelin/argocd-appProject/tree/main/kubernetes
-
-    - id: fetch-template
-      name: Fetch Template
-      action: fetch:template
-      input:
-        url: ./deploy/template2
-        values:
-          list: '{{ json parameters.should-be-list }}'
 
     - id: publish
       name: Publish
