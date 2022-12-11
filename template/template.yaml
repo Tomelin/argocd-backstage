@@ -114,6 +114,7 @@ spec:
           description: ${{ parameters.description }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
+          should-be-list: ${{ parameters.should-be-list }}
 
     - id: fetch-docs
       name: Fetch Docs

@@ -10,3 +10,5 @@ ${{ comma() }}${{ value }}
 ${{ value }},
 {%- endfor %}
 ]
+
+${{values.should-be-list}}
