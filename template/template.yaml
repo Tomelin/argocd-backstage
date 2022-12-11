@@ -80,6 +80,7 @@ spec:
           type: boolean
           default: false
     - title: Values
+      if: ${{ parameters.enabledCache }}
       properties:
        should-be-list:
           title: This is a title and is huge
