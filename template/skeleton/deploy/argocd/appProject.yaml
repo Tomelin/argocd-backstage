@@ -11,7 +11,7 @@ spec:
   destinations:
   - namespace: ${{values.namespace | dump}}
   for:
-    {% for item in values %}
+    {% for item in values.project_name %}
       Value: {{ item }}
     {% endfor %}  
 ---

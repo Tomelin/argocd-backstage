@@ -17,6 +17,9 @@ patches:
 # echo "You have enabled your database!"
 # {% endif %}
 
+{% for item in values.project_name %}
+  Value: {{ item }}
+{% endfor %}  
 
 {% for item in values %}
   Value: {{ item }}
