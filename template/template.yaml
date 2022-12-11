@@ -141,10 +141,10 @@ spec:
           required:
           - queue
           dependencies:
-            enabledQueue:
+            queue:
               oneOf:
                 - properties:
-                    enabledQueue:
+                    queue:
                       enum:
                         - true
                     java version:
