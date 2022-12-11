@@ -15,7 +15,7 @@ spec:
       Value: {{ item }}
     {% endfor %}  
 ---
- {% for item in values %}
+ {% for item in values.list %}
     Value: {{ item }}
   {% endfor %}  
   
