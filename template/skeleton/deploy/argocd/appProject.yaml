@@ -10,6 +10,10 @@ spec:
   {% endif %}
   destinations:
   - namespace: ${{values.namespace | dump}}
+  for:
+    {% for item in values %}
+      Value: {{ item }}
+    {% endfor %}  
 ---
  {% for item in values %}
     Value: {{ item }}
