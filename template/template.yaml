@@ -63,8 +63,8 @@ spec:
             enabledDB:
               oneOf:
                 - properties:
-                    technology:
-                      boolean: true
+                    enabledDB:
+                      enum: true
                     java version:
                       type: "string"
                       enum:
