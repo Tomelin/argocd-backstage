@@ -1,7 +1,7 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: tomelin-template
+  name: tomelin-loop
   title: Tomelin SSR Template
   description: Create a website powered with Next.js
   tags:
