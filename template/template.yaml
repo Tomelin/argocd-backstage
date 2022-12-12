@@ -64,7 +64,7 @@ spec:
               default: false
           dependencies:
             storage:
-              oneOf:
+              anyOf:
                 - properties:
                     storage:
                       enum:
@@ -84,7 +84,7 @@ spec:
               default: false
           dependencies:
             database:
-              oneOf:
+              allOf:
                 - properties:
                     database:
                       enum:
