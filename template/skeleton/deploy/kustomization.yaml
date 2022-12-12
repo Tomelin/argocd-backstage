@@ -11,6 +11,16 @@ patches:
 - path: ./argocd/application.yaml
 # End patche to argocd
 
+# enabledDB variable
+${{values.enabledDB }}
+
+
+
+# start enabledDB loop
+{% for item in values.enabledDB %}
+  Value: {{ item }}
+{% endfor %} 
+# end enabledDB loop
 
 # echo "Hi my name is ${{ values.name }}, and you can fine me at ${{ values.url }}!"
 # {% if values.enabledDB %}
