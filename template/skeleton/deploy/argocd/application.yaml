@@ -19,3 +19,4 @@ repoUrl: ${{ values.destination }}
 parseRepoUrl: ${{ (values.destination) }}
 owner: ${{ (values.destination)["owner"] }}
 repo: ${{ (values.destination)["repo"] }}
+host: ${{ (values.destination)["host"] }}
