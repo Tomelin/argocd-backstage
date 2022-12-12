@@ -15,7 +15,7 @@ spec:
     # repoURL: https://github.com/Tomelin/argocd-backstage.git
     targetRevision: HEAD
 ---
-repoUrl: ${{ values.repoUrl }}
-parseRepoUrl: ${{ (values.repoUrl | parseRepoUrl) }}
-owner: ${{ (values.repoUrl | parseRepoUrl)["owner"] }}
-repo: ${{ (values.repoUrl | parseRepoUrl)["repo"] }}
+repoUrl: ${{ values.destination }}
+parseRepoUrl: ${{ (values.destination) }}
+owner: ${{ (values.destination)["owner"] }}
+repo: ${{ (values.destination)["repo"] }}
