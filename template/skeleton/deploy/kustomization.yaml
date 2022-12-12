@@ -13,12 +13,12 @@ patches:
 
 # enabledDB variable
 enabledDB ${{values.enabledDB }}
-database ${{values.enabledDB.database | lower }}
-databaseKind ${{values.enabledDB.databaseKind | lower}}
-databaseKind2 ${{values.enabledDB.database.databaseKind| lower }}
-databaseVersion ${{values.enabledDB.databaseVersion | lower}}
-databaseVersion2 ${{values.enabledDB.database.databaseVersion | lower}}
-databaseVersion3 ${{values.enabledDB.databaseKind.databaseVersion | lower}}
+database ${{values.enabledDB.database}}
+databaseKind ${{values.enabledDB.databaseKind }}
+databaseKind2 ${{values.enabledDB.database.databaseKind }}
+databaseVersion ${{values.enabledDB.databaseVersion }}
+databaseVersion2 ${{values.enabledDB.database.databaseVersion}}
+databaseVersion3 ${{values.enabledDB.databaseKind.databaseVersion}}
 
 
 
@@ -27,6 +27,8 @@ databaseVersion3 ${{values.enabledDB.databaseKind.databaseVersion | lower}}
   Value: {{ item }}
 {% endfor %} 
 # end enabledDB loop
+
+{% for i in "values" | list %}{{ i }},{% endfor %}
 
 # echo "Hi my name is ${{ values.name }}, and you can fine me at ${{ values.url }}!"
 # {% if values.enabledDB %}
