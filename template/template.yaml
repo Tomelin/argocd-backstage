@@ -54,7 +54,7 @@ spec:
     #       description: Namespace for deploy the application in AKS (Azure Kubernetes).
     - title: Azure Resources
       properties:
-        enabledStorage:
+        enabledSTA:
           title: Enable Storage
           description: Enable sorage in your application.
           type: object
