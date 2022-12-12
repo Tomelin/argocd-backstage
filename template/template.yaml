@@ -295,7 +295,8 @@ spec:
       action: debug:log
       input:
         temp: ${{ parameters }}
-        parameters: true
+        destination: ${{ parameters.repoUrl | parseRepoUrl }}
+
     - name: ResultsSpec
       action: debug:log
       input:
@@ -306,6 +307,7 @@ spec:
       action: debug:log
       input:
         listWorkspace: true
+
     - name: Results3
       action: debug:log
         
