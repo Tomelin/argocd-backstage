@@ -58,6 +58,8 @@ spec:
           title: Enable Storage
           description: Enable storage in your application.
           type: object
+          ui:widget: radio
+          default: false
           properties:
             storage:
               type: boolean
