@@ -284,36 +284,36 @@ spec:
           - .github/workflows/*
         values:
           component_id: ${{ parameters.component_id }}
-          # enabledDB: ${{ parameters.enabledDB }}
-          # project_name: ${{ parameters.project_name }}
-          # namespace: ${{ parameters.namespace }}
-          # description: ${{ parameters.description }}
-          # destination: ${{ parameters.repoUrl | parseRepoUrl }}
-          # owner: ${{ parameters.owner }}
+          enabledDB: ${{ parameters.enabledDB }}
+          project_name: ${{ parameters.project_name }}
+          namespace: ${{ parameters.namespace }}
+          description: ${{ parameters.description }}
+          destination: ${{ parameters.repoUrl | parseRepoUrl }}
+          owner: ${{ parameters.owner }}
 
-    # - id: fetch-docs
-    #   name: Fetch Docs
-    #   if: ${{ parameters.enabledDB }}
-    #   action: fetch:plain
-    #   input:
-    #     targetPath: ./deploy/argocd
-    #     url: https://github.com/backstage/community/blob/main/backstage-community-sessions
+    - id: fetch-docs
+      name: Fetch Docs
+      if: ${{ parameters.enabledDB }}
+      action: fetch:plain
+      input:
+        targetPath: ./deploy/argocd
+        url: https://github.com/backstage/community/blob/main/backstage-community-sessions
     
-    # - id: fetch-cache
-    #   name: Fetch Cache
-    #   if: ${{ parameters.enabledCache }}
-    #   action: fetch:plain
-    #   input:
-    #     targetPath: ./deploy/kubernetes
-    #     url: https://github.com/Tomelin/argocd-backstage/blob/main
+    - id: fetch-cache
+      name: Fetch Cache
+      if: ${{ parameters.enabledCache }}
+      action: fetch:plain
+      input:
+        targetPath: ./deploy/kubernetes
+        url: https://github.com/Tomelin/argocd-backstage/blob/main
 
-    # - id: fetch-Kube
-    #   name: Fetch Kube
-    #   if: ${{ parameters.enabledCache }}
-    #   action: fetch:plain
-    #   input:
-    #     targetPath: ./deploy/kubernetes
-    #     url: https://github.com/Tomelin/argocd-appProject/tree/main/kubernetes
+    - id: fetch-Kube
+      name: Fetch Kube
+      if: ${{ parameters.enabledCache }}
+      action: fetch:plain
+      input:
+        targetPath: ./deploy/kubernetes
+        url: https://github.com/Tomelin/argocd-appProject/tree/main/kubernetes
 
     - id: publish
       name: Publish
@@ -323,12 +323,12 @@ spec:
         description: This is ${{ parameters.component_id }}
         repoUrl: ${{ parameters.repoUrl }}
 
-    - id: register
-      name: Register
-      action: catalog:register
-      input:
-        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
-        catalogInfoPath: "/catalog-info.yaml"
+    # - id: register
+    #   name: Register
+    #   action: catalog:register
+    #   input:
+    #     repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+    #     catalogInfoPath: "/catalog-info.yaml"
 
   output:
     links:
