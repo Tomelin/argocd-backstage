@@ -300,8 +300,12 @@ spec:
     - name: ResultsParameters
       action: debug:log
       input:
-        temp: ${{ parameters.project_name }}
+        temp: ${{ parameters }}
         parameters: true
+    - name: ResultsSpec
+      action: debug:log
+      input:
+        temp: ${{ spec }}
 
     - name: Results
       action: debug:log
