@@ -223,7 +223,21 @@ spec:
                         - v2
                   required: 
                     - queue version
-
+    - title: Creating a API
+      required: []
+      properties:
+        technology:
+          type: string
+          default: ${{ parameters.project_name }}
+        technology2:
+          type: string
+          default: "teste"
+        technology3:
+          type: string
+          ui:placeholder: "teste123"
+        technology4:
+          type: string
+          ui:placeholder: ${{ parameters.project_name }}
     - title: Choose a location
       required:
         - repoUrl
