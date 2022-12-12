@@ -185,16 +185,24 @@ spec:
           description: Enable vault in your application.
           type: boolean
           default: false
+        name:
+          title: Select features
+          type: array
+          items:
+            type: boolean
+            enum:
+              - 'Enable scraping'
+              - 'Enable HPA'
+              - 'Enable cache'
+          uniqueItems: true
+          ui:widget: checkboxes
         enabledStorage:
           title: Enable Storage
           description: Enable sorage in your application.
-          type: array
-          enum:
-            - 'Enable scraping'
-            - 'Enable HPA'
-            - 'Enable cache'
+          type: boolean
+          default: false
           ui:help: 'Hint: additional description...'
-          ui:widget: checkboxes
+          ui:widget: radio
     - title: Creating a API
       required: []
       properties:
