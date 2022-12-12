@@ -76,6 +76,7 @@ spec:
                     storage version:
                       type: "string"
                       description: Choose the Storage Account tier
+                      default: v1
                       enum:
                         - v1
                         - v2
