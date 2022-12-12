@@ -306,7 +306,7 @@ spec:
       action: debug:log
       input:
         temp: ${{ spec.project_name }}
-        temp2: ${{ spec }}
+        temp2: ${{ spec['project_name'].output }}
 
     - name: Results
       action: debug:log
