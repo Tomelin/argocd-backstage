@@ -5,6 +5,7 @@ bases:
 
 - https://github.com/Tomelin/argocd-appProject/common
 
+# enable argocd  ${{ values.argocd  }}
 patches:
 
 # STARTS ArgoCD
