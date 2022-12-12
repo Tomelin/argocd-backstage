@@ -61,8 +61,11 @@ spec:
           properties:
             storage:
               type: boolean
+              enum:
+                - true
+                - false
               default: false
-              ui:widget: checkbox
+              ui:widget: radio
           dependencies:
             storage:
               oneOf:
