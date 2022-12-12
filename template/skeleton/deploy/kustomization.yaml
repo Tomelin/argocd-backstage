@@ -24,7 +24,7 @@ patches:
       path: /metadata/name
       value: ${{values.project_name | dump}}
     - op: replace
-      path: /spec/destinations/namespace
+      path: /spec/destination/namespace
       value: ${{values.namespace | dump}}
     - op: replace
       path: /spec/project
