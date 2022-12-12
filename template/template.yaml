@@ -62,9 +62,10 @@ spec:
             storage:
               type: boolean
               default: false
+              ui:widget: checkbox
           dependencies:
             storage:
-              anyOf:
+              oneOf:
                 - properties:
                     storage:
                       enum:
@@ -84,7 +85,7 @@ spec:
               default: false
           dependencies:
             database:
-              allOf:
+              oneOf:
                 - properties:
                     database:
                       enum:
