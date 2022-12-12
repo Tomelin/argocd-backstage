@@ -63,8 +63,6 @@ spec:
               type: boolean
               default: false
               ui:widget: radio
-          required:
-          - storage
           dependencies:
             storage:
               oneOf:
@@ -86,8 +84,6 @@ spec:
               type: boolean
               default: false
               ui:widget: radio
-          required:
-          - database
           dependencies:
             database:
               oneOf:
