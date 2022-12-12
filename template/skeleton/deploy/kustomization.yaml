@@ -2,10 +2,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 bases:
-#   {% if values.argocd %}
-# - https://github.com/Tomelin/argocd-appProject/common
-#   {% else %}
-
+- https://github.com/Tomelin/argocd-appProject/common
+  {% if values.description %}
+  description: ${{values.description | dump}}
+  {% else %}
 
 # enable argocd  ${{ values.argocd  }}
 patches:
