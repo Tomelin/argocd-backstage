@@ -101,7 +101,7 @@ spec:
                     database:
                       enum:
                         - true
-                    database kind:
+                    databaseKind:
                       type: "string"
                       description: Choose the Database type
                       default: PostgreSQL
@@ -111,12 +111,12 @@ spec:
                         - MSSQL
                         - MongoDB
                   required: 
-                    - database kind
+                    - databaseKind
                   dependencies:
-                    database kind:
+                    databaseKind:
                       oneOf:
                         - properties: 
-                            database kind:
+                            databaseKind:
                               enum:
                                 - PostgreSQL
                             database version:
@@ -127,7 +127,7 @@ spec:
                                 - "11"
                                 - "10"
                         - properties:
-                            database kind:
+                            databaseKind:
                               enum:
                                 - MySQL
                             database version:
@@ -139,7 +139,7 @@ spec:
                                 - "5.7"
                                 - "8.0"
                         - properties:
-                            database kind:
+                            databaseKind:
                               enum:
                                 - MSSQL
                             database version:
@@ -154,7 +154,7 @@ spec:
                                 - "2017"
                                 - "2019"
                         - properties:
-                            database kind:
+                            databaseKind:
                               enum:
                                 - MongoDB
                             database version:
