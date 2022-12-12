@@ -122,6 +122,7 @@ spec:
                             database version:
                               type: "string"
                               description: Choose the Database version
+                              default: "11"
                               enum:
                                 - "11"
                                 - "10"
@@ -134,6 +135,7 @@ spec:
                             database version:
                               type: "string"
                               description: Choose the Database version
+                              default: "5.6"
                               enum:
                                 - "5.6"
                                 - "5.7"
@@ -147,6 +149,7 @@ spec:
                             database version:
                               type: "string"
                               description: Choose the Database version
+                              default: "2019"
                               enum:
                                 - "2008R2"
                                 - "2012"
@@ -163,6 +166,7 @@ spec:
                             database version:
                               type: "string"
                               description: Choose the Database version
+                              default: "4.0"
                               enum:
                                 - "3.2"
                                 - "3.6"
