@@ -20,7 +20,12 @@ spec:
         component_id:
           title: Name
           type: string
-          description: Unique name of the component
+          description: Project name
+          ui:field: EntityNamePicker
+        component_name:
+          title: Name
+          type: string
+          description: Unique name of the application inside the project
           ui:field: EntityNamePicker
         description:
           title: Description
@@ -283,14 +288,15 @@ spec:
         copyWithoutRender:
           - .github/workflows/*
         values:
-          component_id: ${{ parameters.component_id }}
-          enabledDB:    ${{ parameters.enabledDB }}
-          project_name: ${{ parameters.project_name }}
-          namespace:    ${{ parameters.namespace }}
-          description:  ${{ parameters.description }}
-          destination:  ${{ parameters.repoUrl | parseRepoUrl }}
-          owner:        ${{ parameters.owner }}
-          repoUrl:      ${{ parameters.repoUrl }}
+          component_id:   ${{ parameters.component_id }}
+          component_name: ${{ parameters.component_name }}
+          enabledDB:      ${{ parameters.enabledDB }}
+          project_name:   ${{ parameters.project_name }}
+          namespace:      ${{ parameters.namespace }}
+          description:    ${{ parameters.description }}
+          destination:    ${{ parameters.repoUrl | parseRepoUrl }}
+          owner:          ${{ parameters.owner }}
+          repoUrl:        ${{ parameters.repoUrl }}
 
     # - id: fetch-docs
     #   name: Fetch Docs
