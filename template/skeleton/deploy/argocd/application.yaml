@@ -12,6 +12,5 @@ spec:
   source:
     path: deploy/
     repoURL: https://${{ (values.destination)["host"] }}/${{ (values.destination)["owner"] }}/${{ (values.destination)["repo"] }}.git
-    repoURL: ${{ values.repoUrl }}
     targetRevision: HEAD
 
