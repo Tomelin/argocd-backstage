@@ -223,21 +223,7 @@ spec:
                         - v2
                   required: 
                     - queue version
-    - title: Creating a API
-      required: []
-      properties:
-        technology:
-          type: string
-          default: ${{ parameters.project_name }}
-        technology2:
-          type: string
-          default: "teste"
-        technology3:
-          type: string
-          ui:placeholder: "teste123"
-        technology4:
-          type: string
-          ui:placeholder: ${{ parameters.project_name }}
+
     - title: Choose a location
       required:
         - repoUrl
@@ -263,9 +249,9 @@ spec:
           application_name: ${{ parameters.application_name | trim}}
           enabledDB:      ${{ parameters.enabledDB }}
           description:    ${{ parameters.description }}
-          destination:    ${{ parameters.repoUrl | parseRepoUrl }}
+          destination:    "https://github.com/${{ parameters.project_name }}/${{ parameters.application_name }}.git"
           owner:          ${{ parameters.owner }}
-          repoUrl:        ${{ parameters.repoUrl }}
+          repoUrl:        "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
           argocd:        ${{ parameters.argocd }}
 
     # - id: fetch-docs
@@ -295,8 +281,7 @@ spec:
       action: debug:log
       input:
         temp: ${{ parameters }}
-        destination: ${{ parameters.repoUrl | parseRepoUrl }}
-
+        parameters: true
     - name: ResultsSpec
       action: debug:log
       input:
@@ -307,7 +292,6 @@ spec:
       action: debug:log
       input:
         listWorkspace: true
-
     - name: Results3
       action: debug:log
         
@@ -317,7 +301,7 @@ spec:
       input:
         allowedHosts: ["github.com"]
         description: This is ${{ parameters.project_name }}
-        repoUrl: ${{ parameters.repoUrl }}
+        repoUrl: "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
         defaultBranch: main
         repoVisibility: public
 
