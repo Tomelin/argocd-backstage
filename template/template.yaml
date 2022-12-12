@@ -101,11 +101,14 @@ spec:
                     database kind:
                       type: "string"
                       description: Choose the Database type
+                      default: MongoDB
                       enum:
                         - MySQL
                         - PostgreSQL
                         - MSSQL
                         - MongoDB
+                  required: 
+                    - database kind
                   dependencies:
                     database kind:
                       oneOf:
@@ -158,8 +161,7 @@ spec:
                                 - "4.2"
                           required: 
                             - database version
-                  required: 
-                    - database kind
+
 
         enabledStorage:
           title: Enable Storage
