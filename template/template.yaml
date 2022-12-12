@@ -313,6 +313,7 @@ spec:
           destination:    ${{ parameters.repoUrl | parseRepoUrl }}
           owner:          ${{ parameters.owner }}
           repoUrl:        ${{ parameters.repoUrl }}
+          argocd:        ${{ parameters.argocd }}
 
     # - id: fetch-docs
     #   name: Fetch Docs
