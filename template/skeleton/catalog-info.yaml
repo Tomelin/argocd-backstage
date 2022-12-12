@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: "${{values.component_id }}_${{values.component_name }}"
+  name: "${{values.project_name }}_${{values.application_name }}"
   {%- if values.description %}
   description_dump: ${{values.description | dump}}
   description: ${{values.description | dump}}
