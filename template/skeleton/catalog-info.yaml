@@ -3,11 +3,12 @@ kind: Component
 metadata:
   name: "${{values.project_name }}_${{values.application_name }}"
   {%- if values.description %}
-  description_dump: ${{values.description | dump}}
   description: ${{values.description | dump}}
+  {%- else %}
+  description: 
+    project: ${{values.project_name | dump }}
+    application: ${{values.application_name | dump }}
   {%- endif %}
-  project_name_dump: ${{values.project_name | dump}}
-  project_name: ${{values.project_name}}
   annotations:
     github.com/project-slug: ${{values.destination.owner + "/" + values.destination.repo}}
     backstage.io/techdocs-ref: dir:.
