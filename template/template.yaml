@@ -44,7 +44,7 @@ spec:
           title: Register
           type: boolean
           description: Register the component in Backstage?
-          ui:widget: radio
+          ui:widget: switch
           default: true
     - title: ArgoCD information
       required:
