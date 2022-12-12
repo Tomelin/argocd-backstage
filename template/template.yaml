@@ -9,7 +9,7 @@ metadata:
     - react
     - temp
 spec:
-  owner: rafael.tomelin@pagonxt.com
+  owner: rafael.tomelin@company.com
   type: website
   parameters:
     - title: Provide some simple information
