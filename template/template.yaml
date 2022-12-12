@@ -199,6 +199,7 @@ spec:
         #   default: false
         name:
           title: Select features to enable
+          if: ${{ parameters.name2 }}
           type: array
           items:
             type: boolean
@@ -209,13 +210,13 @@ spec:
               - 'Enable Azure Vault'
           uniqueItems: true
           ui:widget: checkboxes
-        # enabledStorage:
-        #   title: Enable Storage
-        #   description: Enable sorage in your application.
-        #   type: boolean
-        #   default: false
-        #   ui:help: 'Hint: additional description...'
-        #   ui:widget: radio
+        enabledStorage:
+          title: Enable Storage
+          description: Enable sorage in your application.
+          type: boolean
+          default: false
+          ui:help: 'Hint: additional description...'
+          ui:widget: radio
 
     - title: Creating a API
       required: []
