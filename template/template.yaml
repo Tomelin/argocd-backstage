@@ -14,16 +14,16 @@ spec:
   parameters:
     - title: Provide some simple information
       required:
-        - component_id
-        - component_name
+        - project_name
+        - application_name
         - owner
       properties:
-        component_id:
+        project_name:
           title: Name
           type: string
           description: Project name
           ui:field: EntityNamePicker
-        component_name:
+        application_name:
           title: Name
           type: string
           description: Unique name of the application inside the project
@@ -52,27 +52,6 @@ spec:
           description: Enable ArgoCD files?
           ui:widget: checkbox
           default: true
-#     - title: ArgoCD information
-#       required:
-#         - project_name
-#         - application_name
-#         - namespace
-#       properties:
-#         project_name:
-#           title: Project Name
-#           type: string
-#           description: Project name to create inside ArgoCD.
-#           input:
-#             project_name: ${{ parameters.component_id }}
-#         application_name:
-#           title: Application Name
-#           type: string
-#           description: Application name to deploy in AKS and inside ArgoCD project.
-#           default: ${{ parameters.component_name }}
-#         namespace:
-#           title: Namespace
-#           type: string
-#           description: Namespace for deploy the application in AKS (Azure Kubernetes).
     - title: Azure Resources
       properties:
         enabledSTA:
@@ -245,45 +224,6 @@ spec:
                   required: 
                     - queue version
 
-#     - title: Creating a API
-#       required: []
-#       properties:
-#         technology:
-#           type: boolean
-#           default: false
-
-#             # - javascript
-#             # - python
-
-      # Creating a dependency based on the selected technology above
-#       dependencies:
-#         technology:
-#           oneOf:
-#             - properties:
-#                 technology:
-#                   enum:
-#                     - true
-#                 java version:
-#                   type: "string"
-#                   enum:
-#                     - java8
-#                     - java11
-
-              # Creating a dependency based on the selected java version (not necessary, just for example)
-#               dependencies:
-#                 java version:
-#                   oneOf:
-#                     - properties: 
-#                         java version:
-#                           enum:
-#                             - java8
-#                         any other option:
-#                           type: "string"
-#                           enum:
-#                             - option1
-#                             - java build x.y.z
-#               required: 
-#                 - java version
     - title: Choose a location
       required:
         - repoUrl
@@ -304,11 +244,9 @@ spec:
         copyWithoutRender:
           - .github/workflows/*
         values:
-          component_id:   ${{ parameters.component_id | trim }}
-          component_name: ${{ parameters.component_name }}
+          project_name:   ${{ parameters.project_name | trim }}
+          application_name: ${{ parameters.application_name | trim}}
           enabledDB:      ${{ parameters.enabledDB }}
-          project_name:   ${{ parameters.project_name }}
-          namespace:      ${{ parameters.namespace }}
           description:    ${{ parameters.description }}
           destination:    ${{ parameters.repoUrl | parseRepoUrl }}
           owner:          ${{ parameters.owner }}
@@ -344,7 +282,7 @@ spec:
       action: publish:github
       input:
         allowedHosts: ["github.com"]
-        description: This is ${{ parameters.component_id }}
+        description: This is ${{ parameters.project_name }}
         repoUrl: ${{ parameters.repoUrl }}
         defaultBranch: main
         repoVisibility: public
