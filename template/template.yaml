@@ -54,6 +54,30 @@ spec:
     #       description: Namespace for deploy the application in AKS (Azure Kubernetes).
     - title: Azure Resources
       properties:
+        enabledStorage:
+          title: Enable Storage
+          description: Enable sorage in your application.
+          type: object
+          properties:
+            storage:
+              type: boolean
+              default: false
+              ui:widget: radio
+          required:
+          - storage
+          dependencies:
+            storage:
+              oneOf:
+                - properties:
+                    storage:
+                      enum:
+                        - true
+                    database version:
+                      type: "string"
+                      enum:
+                        - PostgresSQL
+                        - MySQL
+
         # enabledDB:
         #   title: Enable Databse
         #   description: Help others understand what this website is for.
