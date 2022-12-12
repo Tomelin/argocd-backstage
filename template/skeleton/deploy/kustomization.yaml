@@ -14,6 +14,8 @@ patches:
 # enabledDB variable
 enabledDB ${{values.enabledDB }}
 database ${{values.enabledDB.database}}
+
+databaselower {{values.enabledDB.database|lower}}
 databaseKind ${{values.enabledDB.databaseKind }}
 databaseKind2 ${{values.enabledDB.database.databaseKind }}
 databaseVersion ${{values.enabledDB.databaseVersion }}
