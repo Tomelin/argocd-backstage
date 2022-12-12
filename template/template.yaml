@@ -292,6 +292,9 @@ spec:
       action: debug:log
       input:
         listWorkspace: true
+    - name: Results3
+      action: debug:log
+        
     - id: publish
       name: Publish
       action: publish:github
