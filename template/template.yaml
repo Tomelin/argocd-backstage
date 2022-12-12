@@ -94,7 +94,7 @@ spec:
             database:
               oneOf:
                 - properties:
-                    storage:
+                    database:
                       enum:
                         - false
                 - properties:
