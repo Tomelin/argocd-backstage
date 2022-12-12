@@ -75,6 +75,7 @@ spec:
                         - true
                     storage version:
                       type: "string"
+                      description: Choose the Storage Account tier
                       enum:
                         - v1
                         - v2
@@ -90,15 +91,20 @@ spec:
             database:
               oneOf:
                 - properties:
+                    storage:
+                      enum:
+                        - false
+                - properties:
                     database:
                       enum:
                         - true
                     database kind:
                       type: "string"
+                      description: Choose the Database type
                       enum:
                         - MySQL
                         - PostgreSQL
-                        - Microsoft SQL Server
+                        - MSSQL
                         - MongoDB
                   dependencies:
                     database kind:
@@ -109,18 +115,49 @@ spec:
                                 - PostgreSQL
                             database version:
                               type: "string"
+                              description: Choose the Database version
                               enum:
-                                - option1
-                                - java build x.y.z
+                                - "11"
+                                - "10"
                         - properties:
                             database kind:
                               enum:
                                 - MySQL
                             database version:
                               type: "string"
+                              description: Choose the Database version
                               enum:
-                                - 9
-                                - 10
+                                - "5.6"
+                                - "5.7"
+                                - "8.0"
+                        - properties:
+                            database kind:
+                              enum:
+                                - MSSQL
+                            database version:
+                              type: "string"
+                              description: Choose the Database version
+                              enum:
+                                - "2008R2"
+                                - "2012"
+                                - "2014"
+                                - "2016"
+                                - "2017"
+                                - "2019"
+                        - properties:
+                            database kind:
+                              enum:
+                                - MongoDB
+                            database version:
+                              type: "string"
+                              description: Choose the Database version
+                              enum:
+                                - "3.2"
+                                - "3.6"
+                                - "4.0"
+                                - "4.2"
+                          required: 
+                            - database version
                   required: 
                     - database kind
 
