@@ -39,7 +39,13 @@ spec:
           ui:field: OwnerPicker
           ui:options:
             allowedKinds:
-              - Group
+              - Group        
+        register:
+          title: Register
+          type: boolean
+          description: Register the component in Backstage?
+          ui:widgest: radio
+          default: true
     - title: ArgoCD information
       required:
         - project_name
