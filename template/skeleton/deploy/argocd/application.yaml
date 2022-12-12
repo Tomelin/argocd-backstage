@@ -12,4 +12,5 @@ spec:
   source:
     path: deploy/
     repoURL: ${{values.repoUrl | dump}}
+    # repoURL: https://github.com/Tomelin/argocd-backstage.git
     targetRevision: HEAD
