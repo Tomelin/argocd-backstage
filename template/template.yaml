@@ -326,6 +326,16 @@ spec:
         defaultBranch: main
         repoVisibility: public
 
+    - id: publish2
+      name: Publish2
+      action: publish:github
+      input:
+        allowedHosts: ["github.com"]
+        description: This is ${{ parameters.component_id }}
+        repoUrl: ${{ parameters.repoUrl }}_resources
+        defaultBranch: resources
+        repoVisibility: public
+
     # - id: register
     #   name: Register
     #   action: catalog:register
