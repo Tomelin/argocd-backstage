@@ -7,6 +7,8 @@ metadata:
 spec:
   {% if values.description %}
   description: ${{values.description | dump}}
+  {% else %}
+  description: "ArgoCD project ${{ values.project_name }}"
   {% endif %}
   destinations:
   - namespace: ${{values.namespace | dump}}
