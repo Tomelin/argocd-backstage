@@ -52,27 +52,27 @@ spec:
           description: Enable ArgoCD files?
           ui:widget: checkbox
           default: true
-    - title: ArgoCD information
-      required:
-        - project_name
-        - application_name
-        - namespace
-      properties:
-        project_name:
-          title: Project Name
-          type: string
-          description: Project name to create inside ArgoCD.
-          input:
-            project_name: ${{ parameters.component_id }}
-        application_name:
-          title: Application Name
-          type: string
-          description: Application name to deploy in AKS and inside ArgoCD project.
-          default: ${{ parameters.component_name }}
-        namespace:
-          title: Namespace
-          type: string
-          description: Namespace for deploy the application in AKS (Azure Kubernetes).
+#     - title: ArgoCD information
+#       required:
+#         - project_name
+#         - application_name
+#         - namespace
+#       properties:
+#         project_name:
+#           title: Project Name
+#           type: string
+#           description: Project name to create inside ArgoCD.
+#           input:
+#             project_name: ${{ parameters.component_id }}
+#         application_name:
+#           title: Application Name
+#           type: string
+#           description: Application name to deploy in AKS and inside ArgoCD project.
+#           default: ${{ parameters.component_name }}
+#         namespace:
+#           title: Namespace
+#           type: string
+#           description: Namespace for deploy the application in AKS (Azure Kubernetes).
     - title: Azure Resources
       properties:
         enabledSTA:
