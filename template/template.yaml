@@ -1,7 +1,327 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
+  name: tomelin-templateapiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
   name: tomelin-template
+  title: Tomelin SSR Template
+  description: Create a website powered with Next.js
+  tags:
+    - recommended
+    - react
+    - temp
+spec:
+  owner: rafael.tomelin@company.com
+  type: website
+  parameters:
+    # - title: Provide some simple information
+    #   required:
+    #     - component_id
+    #     - owner
+    #   properties:
+    #     component_id:
+    #       title: Name
+    #       type: string
+    #       description: Unique name of the component
+    #       ui:field: EntityNamePicker
+    #     description:
+    #       title: Description
+    #       type: string
+    #       description: Help others understand what this website is for.
+    #     owner:
+    #       title: Owner
+    #       type: string
+    #       description: Owner of the component
+    #       ui:field: OwnerPicker
+    #       ui:options:
+    #         allowedKinds:
+    #           - Group
+    # - title: ArgoCD information
+    #   required:
+    #     - project_name
+    #     - application_name
+    #     - namespace
+    #   properties:
+    #     project_name:
+    #       title: Project Name
+    #       type: string
+    #       description: Project name to create inside ArgoCD.
+    #     application_name:
+    #       title: Application Name
+    #       type: string
+    #       description: Application name to deploy in AKS and inside ArgoCD project.
+    #     namespace:
+    #       title: Namespace
+    #       type: string
+    #       description: Namespace for deploy the application in AKS (Azure Kubernetes).
+    - title: Azure Resources
+      properties:
+        # enabledDB:
+        #   title: Enable Databse
+        #   description: Help others understand what this website is for.
+        #   type: object
+        #   properties:
+        #     database:
+        #       type: boolean
+        #       default: false
+        #   required:
+        #   - database
+        #   dependencies:
+        #     database:
+        #       oneOf:
+        #         - properties:
+        #             database:
+        #               enum:
+        #                 - true
+        #             database version:
+        #               type: "string"
+        #               enum:
+        #                 - PostgresSQL
+        #                 - MySQL
+        #           dependencies:
+        #             database version:
+        #               oneOf:
+        #                 - properties: 
+        #                     database version:
+        #                       enum:
+        #                         - PostgresSQL
+        #                     any other option:
+        #                       type: "string"
+        #                       enum:
+        #                         - option1
+        #                         - java build x.y.z
+        #                 - properties: 
+        #                     database version:
+        #                       enum:
+        #                         - MySQL
+        #                     any other option:
+        #                       type: "string"
+        #                       enum:
+        #                         - 9
+        #                         - 10
+        #           required: 
+        #             - database version
+
+        # enabledCache:
+        #   title: Enable Cache
+        #   description: Help others understand what this website is for.
+        #   type: object
+        #   properties:
+        #     queue:
+        #       type: boolean
+        #       default: false
+        #   required:
+        #   - queue
+        #   dependencies:
+        #     queue:
+        #       oneOf:
+        #         - properties:
+        #             queue:
+        #               enum:
+        #                 - true
+        #             java version:
+        #               type: "string"
+        #               enum:
+        #                 - Service Bus
+        #                 - Kafka
+
+        #           # Creating a dependency based on the selected java version (not necessary, just for example)
+        #           dependencies:
+        #             java version:
+        #               oneOf:
+        #                 - properties: 
+        #                     java version:
+        #                       enum:
+        #                         - java8
+        #                     any other option:
+        #                       type: "string"
+        #                       enum:
+        #                         - option1
+        #                         - java build x.y.z
+        #           required: 
+        #             - java version
+
+
+
+        # enabledQueue:
+        #   title: Enable Queue
+        #   description: Help others understand what this website is for.
+        #   type: object
+        #   properties:
+        #     queue:
+        #       type: boolean
+        #       default: false
+        #   required:
+        #   - queue
+        #   dependencies:
+        #     queue:
+        #       oneOf:
+        #         - properties:
+        #             queue:
+        #               enum:
+        #                 - true
+        #             java version:
+        #               type: "string"
+        #               enum:
+        #                 - Service Bus
+        #                 - Kafka
+
+        #           # Creating a dependency based on the selected java version (not necessary, just for example)
+        #           dependencies:
+        #             java version:
+        #               oneOf:
+        #                 - properties: 
+        #                     java version:
+        #                       enum:
+        #                         - java8
+        #                     any other option:
+        #                       type: "string"
+        #                       enum:
+        #                         - option1
+        #                         - java build x.y.z
+        #           required: 
+        #             - java version
+
+        # enabledAKV:
+        #   title: Enable Vault
+        #   description: Enable vault in your application.
+        #   type: boolean
+        #   default: false
+        name:
+          title: Select features to enable
+          type: array
+          items:
+            type: boolean
+            enum:
+              - 'Enable Azure Database'
+              - 'Enable Azure Cache'
+              - 'Enable Azure Message'
+              - 'Enable Azure Vault'
+          uniqueItems: true
+          ui:widget: checkboxes
+        # enabledStorage:
+        #   title: Enable Storage
+        #   description: Enable sorage in your application.
+        #   type: boolean
+        #   default: false
+        #   ui:help: 'Hint: additional description...'
+        #   ui:widget: radio
+
+    - title: Creating a API
+      required: []
+      properties:
+        technology:
+          type: boolean
+          default: false
+
+            # - javascript
+            # - python
+
+      # Creating a dependency based on the selected technology above
+      dependencies:
+        technology:
+          oneOf:
+            - properties:
+                technology:
+                  enum:
+                    - true
+                java version:
+                  type: "string"
+                  enum:
+                    - java8
+                    - java11
+
+              # Creating a dependency based on the selected java version (not necessary, just for example)
+              dependencies:
+                java version:
+                  oneOf:
+                    - properties: 
+                        java version:
+                          enum:
+                            - java8
+                        any other option:
+                          type: "string"
+                          enum:
+                            - option1
+                            - java build x.y.z
+              required: 
+                - java version
+    - title: Choose a location
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
+  steps:
+    - id: template
+      name: Fetch Skeleton + Template
+      action: fetch:template
+      input:
+        url: ./skeleton
+        copyWithoutRender:
+          - .github/workflows/*
+        values:
+          component_id: ${{ parameters.component_id }}
+          enabledDB: ${{ parameters.enabledDB }}
+          project_name: ${{ parameters.project_name }}
+          namespace: ${{ parameters.namespace }}
+          description: ${{ parameters.description }}
+          destination: ${{ parameters.repoUrl | parseRepoUrl }}
+          owner: ${{ parameters.owner }}
+
+    - id: fetch-docs
+      name: Fetch Docs
+      if: ${{ parameters.enabledDB }}
+      action: fetch:plain
+      input:
+        targetPath: ./deploy/argocd
+        url: https://github.com/backstage/community/blob/main/backstage-community-sessions
+    
+    - id: fetch-cache
+      name: Fetch Cache
+      if: ${{ parameters.enabledCache }}
+      action: fetch:plain
+      input:
+        targetPath: ./deploy/kubernetes
+        url: https://github.com/Tomelin/argocd-backstage/blob/main
+
+    - id: fetch-Kube
+      name: Fetch Kube
+      if: ${{ parameters.enabledCache }}
+      action: fetch:plain
+      input:
+        targetPath: ./deploy/kubernetes
+        url: https://github.com/Tomelin/argocd-appProject/tree/main/kubernetes
+
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        allowedHosts: ["github.com"]
+        description: This is ${{ parameters.component_id }}
+        repoUrl: ${{ parameters.repoUrl }}
+
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: "/catalog-info.yaml"
+
+  output:
+    links:
+      - title: Repository
+        url: ${{ steps.publish.output.remoteUrl }}
+      - title: Open in catalog
+        icon: catalog
+        entityRef: ${{ steps.register.output.entityRef }}
+
   title: Tomelin SSR Template
   description: Create a website powered with Next.js
   tags:
