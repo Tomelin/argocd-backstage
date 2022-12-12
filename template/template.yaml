@@ -224,18 +224,18 @@ spec:
                   required: 
                     - queue version
 
-    - title: Choose a location
-      required:
-        - repoUrl
-      properties:
-        repoUrl:
-          title: Repository Location
-          default: github.com?repo=${{ parameters.project_name | trim }}&workspace=workspace&project=myproject
-          type: string
-          ui:field: RepoUrlPicker
-          ui:options:
-            allowedHosts:
-              - github.com
+#     - title: Choose a location
+#       required:
+#         - repoUrl
+#       properties:
+#         repoUrl:
+#           title: Repository Location
+#           default: github.com?repo=${{ parameters.project_name | trim }}&workspace=workspace&project=myproject
+#           type: string
+#           ui:field: RepoUrlPicker
+#           ui:options:
+#             allowedHosts:
+#               - github.com
   steps:
     - id: template
       name: Fetch Skeleton + Template
