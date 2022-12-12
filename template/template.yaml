@@ -58,18 +58,14 @@ spec:
           title: Enable Storage
           description: Enable storage in your application.
           type: object
-          ui:widget: radio
-          default: false
           properties:
             storage:
               type: boolean
               default: false
-              ui:widget: radio
           dependencies:
             storage:
               oneOf:
                 - properties:
-                    ui:widget: radio
                     storage:
                       enum:
                         - true
@@ -86,12 +82,10 @@ spec:
             database:
               type: boolean
               default: false
-              ui:widget: radio
           dependencies:
             database:
               oneOf:
                 - properties:
-                    ui:widget: radio
                     database:
                       enum:
                         - true
@@ -106,7 +100,6 @@ spec:
                     database kind:
                       oneOf:
                         - properties: 
-                            ui:widget: radio
                             database kind:
                               enum:
                                 - PostgreSQL
@@ -116,7 +109,6 @@ spec:
                                 - option1
                                 - java build x.y.z
                         - properties:
-                            ui:widget: radio
                             database kind:
                               enum:
                                 - MySQL
