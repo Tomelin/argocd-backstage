@@ -284,7 +284,7 @@ spec:
           - .github/workflows/*
         values:
           component_id: ${{ parameters.component_id }}
-          enabledDB: ${{ parameters.enabledDB }}
+          enabledDB: ${{ parameters.enabledDB |lower }}
           project_name: ${{ parameters.project_name }}
           namespace: ${{ parameters.namespace }}
           description: ${{ parameters.description }}
