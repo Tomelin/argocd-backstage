@@ -155,18 +155,19 @@ spec:
                   - 'Enable Azure Vault'
               uniqueItems: true
               ui:widget: checkboxes
-          # dependencies:
-          #   features:
-          #     oneOf:
-          #       - properties:
-          #           features:
-          #             enum:
-          #               - Enable Azure Database
-          #           java version:
-          #             type: "string"
-          #             enum:
-          #               - Service Bus
-          #               - Kafka
+          dependencies:
+            features:
+              oneOf:
+                - properties:
+                    features:
+                      enum:
+                        - Enable Azure Database
+                    java version:
+                      type: "string"
+                      ui:widget: checkboxes
+                      enum:
+                        - Service Bus
+                        - Kafka
 
         enabledQueue:
           title: Enable Queue
@@ -192,20 +193,20 @@ spec:
                         - Kafka
 
                   # Creating a dependency based on the selected java version (not necessary, just for example)
-                  dependencies:
-                    java version:
-                      oneOf:
-                        - properties: 
-                            java version:
-                              enum:
-                                - java8
-                            any other option:
-                              type: "string"
-                              enum:
-                                - option1
-                                - java build x.y.z
-                  required: 
-                    - java version
+                  # dependencies:
+                  #   java version:
+                  #     oneOf:
+                  #       - properties: 
+                  #           java version:
+                  #             enum:
+                  #               - java8
+                  #           any other option:
+                  #             type: "string"
+                  #             enum:
+                  #               - option1
+                  #               - java build x.y.z
+                  # required: 
+                  #   - java version
 
         # enabledAKV:
         #   title: Enable Vault
