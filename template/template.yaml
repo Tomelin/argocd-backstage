@@ -191,7 +191,7 @@ spec:
           type: boolean
           default: false
           ui:help: 'Hint: additional description...'
-          ui:widget: radio
+          ui:widget: checkboxes
     - title: Creating a API
       required: []
       properties:
