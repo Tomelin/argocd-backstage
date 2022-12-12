@@ -42,7 +42,7 @@ spec:
               - Group        
         register:
           title: Register
-          type: boolean
+          type: checkbox
           description: Register the component in Backstage?
           ui:widget: switch
           default: true
