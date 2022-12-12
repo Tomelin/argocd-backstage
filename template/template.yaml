@@ -102,6 +102,29 @@ spec:
                         - PostgreSQL
                         - Microsoft SQL Server
                         - MongoDB
+                  dependencies:
+                    database kind:
+                      oneOf:
+                        - properties: 
+                            database kind:
+                              enum:
+                                - PostgreSQL
+                            database version:
+                              type: "string"
+                              enum:
+                                - option1
+                                - java build x.y.z
+                        - properties: 
+                            database kind:
+                              enum:
+                                - MySQL
+                            database version:
+                              type: "string"
+                              enum:
+                                - 9
+                                - 10
+                  required: 
+                    - database kind
 
         enabledStorage:
           title: Enable Storage
