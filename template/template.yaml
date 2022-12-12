@@ -79,6 +79,8 @@ spec:
                       enum:
                         - v1
                         - v2
+                  required: 
+                    - storage version
         enabledDB:
           title: Enable Database
           description: Enable database in your application.
