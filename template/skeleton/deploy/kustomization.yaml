@@ -34,7 +34,7 @@ patches:
       value: ${{values.project_name | dump}}
     - op: replace
       path: /spec/source/repoURL
-      value: https://${{ (values.destination)["host"] }}/${{ (values.destination)["owner"] }}/${{ (values.destination)["repo"] }}.git
+      value: https://github.com/${{ values.project_name }}/${{ values.application_name }}.git
 # END ArgoCD
   {% endif %}
 
