@@ -140,6 +140,21 @@ spec:
         #             - java version
 
 
+        name2:
+          title: Select features
+          type: object
+          properties:
+            features:
+              type: array
+              items:
+                type: boolean
+                enum:
+                  - 'Enable Azure Database'
+                  - 'Enable Azure Cache'
+                  - 'Enable Azure Message'
+                  - 'Enable Azure Vault'
+              uniqueItems: true
+              ui:widget: checkboxes
 
         enabledQueue:
           title: Enable Queue
