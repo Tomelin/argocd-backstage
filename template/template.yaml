@@ -141,44 +141,44 @@ spec:
 
 
 
-        # enabledQueue:
-        #   title: Enable Queue
-        #   description: Help others understand what this website is for.
-        #   type: object
-        #   properties:
-        #     queue:
-        #       type: boolean
-        #       default: false
-        #   required:
-        #   - queue
-        #   dependencies:
-        #     queue:
-        #       oneOf:
-        #         - properties:
-        #             queue:
-        #               enum:
-        #                 - true
-        #             java version:
-        #               type: "string"
-        #               enum:
-        #                 - Service Bus
-        #                 - Kafka
+        enabledQueue:
+          title: Enable Queue
+          description: Help others understand what this website is for.
+          type: object
+          properties:
+            queue:
+              type: boolean
+              default: false
+          required:
+          - queue
+          dependencies:
+            queue:
+              oneOf:
+                - properties:
+                    queue:
+                      enum:
+                        - true
+                    java version:
+                      type: "string"
+                      enum:
+                        - Service Bus
+                        - Kafka
 
-        #           # Creating a dependency based on the selected java version (not necessary, just for example)
-        #           dependencies:
-        #             java version:
-        #               oneOf:
-        #                 - properties: 
-        #                     java version:
-        #                       enum:
-        #                         - java8
-        #                     any other option:
-        #                       type: "string"
-        #                       enum:
-        #                         - option1
-        #                         - java build x.y.z
-        #           required: 
-        #             - java version
+                  # Creating a dependency based on the selected java version (not necessary, just for example)
+                  dependencies:
+                    java version:
+                      oneOf:
+                        - properties: 
+                            java version:
+                              enum:
+                                - java8
+                            any other option:
+                              type: "string"
+                              enum:
+                                - option1
+                                - java build x.y.z
+                  required: 
+                    - java version
 
         # enabledAKV:
         #   title: Enable Vault
