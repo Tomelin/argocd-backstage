@@ -28,7 +28,9 @@ databaseVersion3 ${{values.enabledDB.databaseKind.databaseVersion}}
 {% endfor %} 
 # end enabledDB loop
 
-{% for i in "values" | list %}{{ i }},{% endfor %}
+{% for i in "values" | list %}
+item: {{ i }}
+{% endfor %}
 
 # echo "Hi my name is ${{ values.name }}, and you can fine me at ${{ values.url }}!"
 # {% if values.enabledDB %}
