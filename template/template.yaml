@@ -46,6 +46,12 @@ spec:
           description: Register the component in Backstage?
           ui:widget: checkbox
           default: true
+        argocd:
+          title: ArgoCD
+          type: boolean
+          description: Enable argocd files?
+          ui:widget: checkbox
+          default: true
     - title: ArgoCD information
       required:
         - project_name
