@@ -291,7 +291,7 @@ spec:
         copyWithoutRender:
           - .github/workflows/*
         values:
-          component_id:   ${{ parameters.component_id }}
+          component_id:   ${{ parameters.component_id | trim }}
           component_name: ${{ parameters.component_name }}
           enabledDB:      ${{ parameters.enabledDB }}
           project_name:   ${{ parameters.project_name }}
