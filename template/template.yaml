@@ -188,7 +188,7 @@ spec:
         enabledStorage:
           title: Enable Storage
           description: Enable sorage in your application.
-          type: boolean
+          type: array
           enum:
             - 'Enable scraping'
             - 'Enable HPA'
