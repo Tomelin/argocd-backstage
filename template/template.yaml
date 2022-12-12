@@ -166,16 +166,63 @@ spec:
                                 - "3.6"
                                 - "4.0"
                                 - "4.2"
+        enabledAKV:
+          title: Enable Key Vault
+          description: Enable key vault in your application.
+          type: object
+          properties:
+            vault:
+              type: boolean
+              default: false
+          dependencies:
+            vault:
+              oneOf:
+                - properties:
+                    vault:
+                      enum:
+                        - false
+                - properties:
+                    vault:
+                      enum:
+                        - true
+                    vault version:
+                      type: "string"
+                      description: Choose the Key Vault tier
+                      default: v1
+                      enum:
+                        - v1
+                        - v2
+                  required: 
+                    - vault version
 
-
-
-        enabledStorage:
-          title: Enable Storage
-          description: Enable sorage in your application.
-          type: boolean
-          default: false
-          ui:help: 'Hint: additional description...'
-          ui:widget: radio
+        enabledQueue:
+          title: Enable Message Queue
+          description: Enable message queue in your application.
+          type: object
+          properties:
+            queue:
+              type: boolean
+              default: false
+          dependencies:
+            queue:
+              oneOf:
+                - properties:
+                    queue:
+                      enum:
+                        - false
+                - properties:
+                    queue:
+                      enum:
+                        - true
+                    queue version:
+                      type: "string"
+                      description: Choose the message queue tier
+                      default: v1
+                      enum:
+                        - v1
+                        - v2
+                  required: 
+                    - queue version
 
     - title: Creating a API
       required: []
