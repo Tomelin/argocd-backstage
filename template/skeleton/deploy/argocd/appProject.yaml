@@ -10,3 +10,34 @@ spec:
   {% endif %}
   destinations:
   - namespace: ${{values.namespace | dump}}
+    server: "*"  # cluster 
+  namespaceResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  namespaceResourceBlacklist:
+  - group: ''
+    kind: ResourceQuota
+  - group: ''
+    kind: LimitRange
+  - group: ''
+    kind: NetworkPolicy
+  orphanedResources:
+    warn: false
+  syncWindows:
+  - kind: allow
+    schedule: '10 1 * * *'
+    duration: 1h
+    applications:
+      - '*-prod'
+    manualSync: true
+  - kind: deny
+    schedule: '0 22 * * *'
+    duration: 1h
+    namespaces:
+      - default
+  - kind: allow
+    schedule: '0 23 * * *'
+    duration: 1h
+    clusters:
+      - in-cluster
+      - cluster1
