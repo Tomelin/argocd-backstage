@@ -13,12 +13,12 @@ patches:
 
 # enabledDB variable
 enabledDB ${{values.enabledDB }}
-database ${{values.enabledDB.database }}
-databaseKind ${{values.enabledDB.databaseKind }}
-databaseKind2 ${{values.enabledDB.database.databaseKind }}
-databaseVersion ${{values.enabledDB.databaseVersion }}
-databaseVersion2 ${{values.enabledDB.database.databaseVersion }}
-databaseVersion3 ${{values.enabledDB.databaseKind.databaseVersion }}
+database ${{values.enabledDB.database | lower }}
+databaseKind ${{values.enabledDB.databaseKind | lower}}
+databaseKind2 ${{values.enabledDB.database.databaseKind| lower }}
+databaseVersion ${{values.enabledDB.databaseVersion | lower}}
+databaseVersion2 ${{values.enabledDB.database.databaseVersion | lower}}
+databaseVersion3 ${{values.enabledDB.databaseKind.databaseVersion | lower}}
 
 
 
