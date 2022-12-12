@@ -230,6 +230,7 @@ spec:
       properties:
         repoUrl:
           title: Repository Location
+          default: github.com?repo=${{ parameters.project_name | trim }}&workspace=workspace&project=myproject
           type: string
           ui:field: RepoUrlPicker
           ui:options:
