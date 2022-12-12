@@ -189,7 +189,10 @@ spec:
           title: Enable Storage
           description: Enable sorage in your application.
           type: boolean
-          default: false
+          enum:
+            - 'Enable scraping'
+            - 'Enable HPA'
+            - 'Enable cache'
           ui:help: 'Hint: additional description...'
           ui:widget: checkboxes
     - title: Creating a API
