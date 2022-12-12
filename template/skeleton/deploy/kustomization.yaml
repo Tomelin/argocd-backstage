@@ -16,7 +16,7 @@ enabledDB ${{values.enabledDB }}
 database ${{values.enabledDB.database}}
 
 databaselower {{values.enabledDB.database|lower}}
-databaselower2 ${{values.enabledDB.database|}}
+databaselower2 ${{values.enabledDB.database}}
 
 databaseKind ${{values.enabledDB.databaseKind }}
 databaseKind2 ${{values.enabledDB.database.databaseKind }}
