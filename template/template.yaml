@@ -56,8 +56,8 @@ spec:
       properties:
         enabledSTA:
           title: Enable Storage
-          description: Enable sorage in your application.
-          type: boolean
+          description: Enable storage in your application.
+          type: object
           properties:
             storage:
               type: boolean
@@ -77,163 +77,31 @@ spec:
                       enum:
                         - v1
                         - v2
-
-        # enabledDB:
-        #   title: Enable Databse
-        #   description: Help others understand what this website is for.
-        #   type: object
-        #   properties:
-        #     database:
-        #       type: boolean
-        #       default: false
-        #   required:
-        #   - database
-        #   dependencies:
-        #     database:
-        #       oneOf:
-        #         - properties:
-        #             database:
-        #               enum:
-        #                 - true
-        #             database version:
-        #               type: "string"
-        #               enum:
-        #                 - PostgresSQL
-        #                 - MySQL
-        #           dependencies:
-        #             database version:
-        #               oneOf:
-        #                 - properties: 
-        #                     database version:
-        #                       enum:
-        #                         - PostgresSQL
-        #                     any other option:
-        #                       type: "string"
-        #                       enum:
-        #                         - option1
-        #                         - java build x.y.z
-        #                 - properties: 
-        #                     database version:
-        #                       enum:
-        #                         - MySQL
-        #                     any other option:
-        #                       type: "string"
-        #                       enum:
-        #                         - 9
-        #                         - 10
-        #           required: 
-        #             - database version
-
-        # enabledCache:
-        #   title: Enable Cache
-        #   description: Help others understand what this website is for.
-        #   type: object
-        #   properties:
-        #     queue:
-        #       type: boolean
-        #       default: false
-        #   required:
-        #   - queue
-        #   dependencies:
-        #     queue:
-        #       oneOf:
-        #         - properties:
-        #             queue:
-        #               enum:
-        #                 - true
-        #             java version:
-        #               type: "string"
-        #               enum:
-        #                 - Service Bus
-        #                 - Kafka
-
-        #           # Creating a dependency based on the selected java version (not necessary, just for example)
-        #           dependencies:
-        #             java version:
-        #               oneOf:
-        #                 - properties: 
-        #                     java version:
-        #                       enum:
-        #                         - java8
-        #                     any other option:
-        #                       type: "string"
-        #                       enum:
-        #                         - option1
-        #                         - java build x.y.z
-        #           required: 
-        #             - java version
-
-
-        # name2:
-        #   title: Select features to enable
-        #   type: array
-        #   items:
-        #     type: boolean
-        #     enum:
-        #       - 'Enable Azure Database'
-        #       - 'Enable Azure Cache'
-        #       - 'Enable Azure Message'
-        #       - 'Enable Azure Vault'
-        #   uniqueItems: true
-        #   ui:widget: checkboxes
-
-        # enabledQueue:
-        #   title: Enable Queue
-        #   description: Help others understand what this website is for.
-        #   type: object
-        #   properties:
-        #     queue:
-        #       type: boolean
-        #       default: false
-        #   required:
-        #   - queue
-        #   dependencies:
-        #     queue:
-        #       oneOf:
-        #         - properties:
-        #             queue:
-        #               enum:
-        #                 - true
-        #             java version:
-        #               type: "string"
-        #               enum:
-        #                 - Service Bus
-        #                 - Kafka
-
-                  # Creating a dependency based on the selected java version (not necessary, just for example)
-                  # dependencies:
-                  #   java version:
-                  #     oneOf:
-                  #       - properties: 
-                  #           java version:
-                  #             enum:
-                  #               - java8
-                  #           any other option:
-                  #             type: "string"
-                  #             enum:
-                  #               - option1
-                  #               - java build x.y.z
-                  # required: 
-                  #   - java version
-
-        # enabledAKV:
-        #   title: Enable Vault
-        #   description: Enable vault in your application.
-        #   type: boolean
-        #   default: false
-        # name:
-        #   title: Select features to enable
-        #   if: ${{ parameters.name2 }}
-        #   type: array
-        #   items:
-        #     type: boolean
-        #     enum:
-        #       - 'Enable Azure Database'
-        #       - 'Enable Azure Cache'
-        #       - 'Enable Azure Message'
-        #       - 'Enable Azure Vault'
-        #   uniqueItems: true
-        #   ui:widget: checkboxes
+        enabledDB:
+          title: Enable Database
+          description: Enable database in your application.
+          type: object
+          properties:
+            database:
+              type: boolean
+              default: false
+              ui:widget: radio
+          required:
+          - database
+          dependencies:
+            database:
+              oneOf:
+                - properties:
+                    database:
+                      enum:
+                        - true
+                    database kind:
+                      type: "string"
+                      enum:
+                        - MySQL
+                        - PostgreSQL
+                        - Microsoft SQL Server
+                        - MongoDB
 
         enabledStorage:
           title: Enable Storage
