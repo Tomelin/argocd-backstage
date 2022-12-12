@@ -6,7 +6,6 @@ bases:
 - https://github.com/Tomelin/argocd-appProject/common
   {% endif %}
 
-# enable argocd  ${{ values.argocd  }}
 patches:
 {% if values.argocd %}
 # STARTS ArgoCD
@@ -19,17 +18,17 @@ patches:
       value: ${{values.project_name | dump}}
     - op: replace
       path: /spec/destinations/0/namespace
-      value: ${{values.namespace | dump}}
+      value: ${{values.project_name | dump}}
 - target:
     kind: Application
     name: .*
   patch: |-
     - op: replace
       path: /metadata/name
-      value: ${{values.project_name | dump}}
+      value: ${{values.project_name | trim | dump}}
     - op: replace
       path: /spec/destination/namespace
-      value: ${{values.namespace | dump}}
+      value: ${{values.project_name | trim | dump}}
     - op: replace
       path: /spec/project
       value: ${{values.project_name | dump}}
@@ -39,18 +38,5 @@ patches:
 # END ArgoCD
   {% endif %}
 
-
-# # enabledDB variable
-# enabledDB ${{values.enabledDB }}
-# database ${{values.enabledDB.database}}
-
-# databaselower {{values.enabledDB.database|lower}}
-# databaselower2 ${{values.enabledDB.database}}
-
-# databaseKind ${{values.enabledDB.databaseKind }}
-# databaseKind2 ${{values.enabledDB.database.databaseKind }}
-# databaseVersion ${{values.enabledDB.databaseVersion }}
-# databaseVersion2 ${{values.enabledDB.database.databaseVersion}}
-# databaseVersion3 ${{values.enabledDB.databaseKind.databaseVersion}}
 
 
