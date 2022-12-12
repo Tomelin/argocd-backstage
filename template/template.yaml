@@ -155,6 +155,18 @@ spec:
                   - 'Enable Azure Vault'
               uniqueItems: true
               ui:widget: checkboxes
+          dependencies:
+            features:
+              oneOf:
+                - properties:
+                    features:
+                      enum:
+                        - Enable Azure Database
+                    java version:
+                      type: "string"
+                      enum:
+                        - Service Bus
+                        - Kafka
 
         enabledQueue:
           title: Enable Queue
