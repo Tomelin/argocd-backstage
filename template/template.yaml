@@ -42,9 +42,9 @@ spec:
               - Group        
         register:
           title: Register
-          type: checkbox
+          type: boolean
           description: Register the component in Backstage?
-          ui:widget: switch
+          ui:widget: checkbox
           default: true
     - title: ArgoCD information
       required:
