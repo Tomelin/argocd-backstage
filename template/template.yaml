@@ -72,11 +72,11 @@ spec:
                     storage:
                       enum:
                         - true
-                    database version:
+                    storage version:
                       type: "string"
                       enum:
-                        - PostgresSQL
-                        - MySQL
+                        - v1
+                        - v2
 
         # enabledDB:
         #   title: Enable Databse
@@ -164,41 +164,41 @@ spec:
         #             - java version
 
 
-        name2:
-          title: Select features to enable
-          type: array
-          items:
-            type: boolean
-            enum:
-              - 'Enable Azure Database'
-              - 'Enable Azure Cache'
-              - 'Enable Azure Message'
-              - 'Enable Azure Vault'
-          uniqueItems: true
-          ui:widget: checkboxes
+        # name2:
+        #   title: Select features to enable
+        #   type: array
+        #   items:
+        #     type: boolean
+        #     enum:
+        #       - 'Enable Azure Database'
+        #       - 'Enable Azure Cache'
+        #       - 'Enable Azure Message'
+        #       - 'Enable Azure Vault'
+        #   uniqueItems: true
+        #   ui:widget: checkboxes
 
-        enabledQueue:
-          title: Enable Queue
-          description: Help others understand what this website is for.
-          type: object
-          properties:
-            queue:
-              type: boolean
-              default: false
-          required:
-          - queue
-          dependencies:
-            queue:
-              oneOf:
-                - properties:
-                    queue:
-                      enum:
-                        - true
-                    java version:
-                      type: "string"
-                      enum:
-                        - Service Bus
-                        - Kafka
+        # enabledQueue:
+        #   title: Enable Queue
+        #   description: Help others understand what this website is for.
+        #   type: object
+        #   properties:
+        #     queue:
+        #       type: boolean
+        #       default: false
+        #   required:
+        #   - queue
+        #   dependencies:
+        #     queue:
+        #       oneOf:
+        #         - properties:
+        #             queue:
+        #               enum:
+        #                 - true
+        #             java version:
+        #               type: "string"
+        #               enum:
+        #                 - Service Bus
+        #                 - Kafka
 
                   # Creating a dependency based on the selected java version (not necessary, just for example)
                   # dependencies:
@@ -221,19 +221,20 @@ spec:
         #   description: Enable vault in your application.
         #   type: boolean
         #   default: false
-        name:
-          title: Select features to enable
-          if: ${{ parameters.name2 }}
-          type: array
-          items:
-            type: boolean
-            enum:
-              - 'Enable Azure Database'
-              - 'Enable Azure Cache'
-              - 'Enable Azure Message'
-              - 'Enable Azure Vault'
-          uniqueItems: true
-          ui:widget: checkboxes
+        # name:
+        #   title: Select features to enable
+        #   if: ${{ parameters.name2 }}
+        #   type: array
+        #   items:
+        #     type: boolean
+        #     enum:
+        #       - 'Enable Azure Database'
+        #       - 'Enable Azure Cache'
+        #       - 'Enable Azure Message'
+        #       - 'Enable Azure Vault'
+        #   uniqueItems: true
+        #   ui:widget: checkboxes
+
         enabledStorage:
           title: Enable Storage
           description: Enable sorage in your application.
