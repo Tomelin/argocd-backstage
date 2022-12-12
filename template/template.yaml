@@ -57,7 +57,7 @@ spec:
         enabledSTA:
           title: Enable Storage
           description: Enable sorage in your application.
-          type: object
+          type: boolean
           ui:widget: radio
           properties:
             storage:
