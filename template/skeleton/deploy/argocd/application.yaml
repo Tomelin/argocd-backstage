@@ -12,11 +12,5 @@ spec:
   source:
     path: deploy/
     repoURL: https://${{ (values.destination)["host"] }}/${{ (values.destination)["owner"] }}/${{ (values.destination)["repo"] }}.git
-    # repoURL: https://github.com/Tomelin/argocd-backstage.git
     targetRevision: HEAD
----
-repoUrl: ${{ values.destination }}
-parseRepoUrl: ${{ (values.destination) }}
-owner: ${{ (values.destination)["owner"] }}
-repo: ${{ (values.destination)["repo"] }}
-host: ${{ (values.destination)["host"] }}
+
