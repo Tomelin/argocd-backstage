@@ -141,33 +141,17 @@ spec:
 
 
         name2:
-          title: Select features
-          type: object
-          properties:
-            features:
-              type: array
-              items:
-                type: boolean
-                enum:
-                  - 'Enable Azure Database'
-                  - 'Enable Azure Cache'
-                  - 'Enable Azure Message'
-                  - 'Enable Azure Vault'
-              uniqueItems: true
-              ui:widget: checkboxes
-          dependencies:
-            features:
-              oneOf:
-                - properties:
-                    features:
-                      enum:
-                        - Enable Azure Database
-                    java version:
-                      type: "string"
-                      ui:widget: checkboxes
-                      enum:
-                        - Service Bus
-                        - Kafka
+          title: Select features to enable
+          type: array
+          items:
+            type: boolean
+            enum:
+              - 'Enable Azure Database'
+              - 'Enable Azure Cache'
+              - 'Enable Azure Message'
+              - 'Enable Azure Vault'
+          uniqueItems: true
+          ui:widget: checkboxes
 
         enabledQueue:
           title: Enable Queue
