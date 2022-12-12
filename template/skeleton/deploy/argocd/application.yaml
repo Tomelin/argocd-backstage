@@ -11,7 +11,7 @@ spec:
   project: ${{values.project_name | dump}}
   source:
     path: deploy/
-    repoURL: ${{values.repoUrl | dump}}
+    repoURL: https://${{ (values.destination)["host"] }}/${{ (values.destination)["owner"] }}/${{ (values.destination)["repo"] }}.git
     # repoURL: https://github.com/Tomelin/argocd-backstage.git
     targetRevision: HEAD
 ---
