@@ -61,14 +61,14 @@ spec:
           properties:
             storage:
               type: boolean
-              enum:
-                - true
-                - false
               default: false
-              ui:widget: radio
           dependencies:
             storage:
               oneOf:
+                - properties:
+                    storage:
+                      enum:
+                        - false
                 - properties:
                     storage:
                       enum:
