@@ -50,7 +50,8 @@ spec:
           title: Project Name
           type: string
           description: Project name to create inside ArgoCD.
-          default: ${{ parameters.component_id }}
+          input:
+            project_name: ${{ parameters.component_id }}
         application_name:
           title: Application Name
           type: string
