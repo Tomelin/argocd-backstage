@@ -6,7 +6,7 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    namespace: ${{values.namespace | dump}}
+    namespace: ${{values.project_name | dump}}
     server: https://kubernetes.default.svc
   project: ${{values.project_name | dump}}
   source:
