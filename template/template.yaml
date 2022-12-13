@@ -2,8 +2,8 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: tomelin-template
-  title: Tomelin SSR Template
-  description: Create a website powered with Next.js
+  title: Example a simple Template
+  description: Create a git repository with ArgoCD files
   tags:
     - recommended
     - react
@@ -21,7 +21,7 @@ spec:
         project_name:
           title: Name
           type: string
-          description: Project name
+          description: Project name will use in Kubernetes namespace, ArgocD project, Git repository
           ui:field: EntityNamePicker
         application_name:
           title: Name
@@ -31,7 +31,7 @@ spec:
         description:
           title: Description
           type: string
-          description: Help others understand what this website is for.
+          description: Help others understand what this application is for.
         owner:
           title: Owner
           type: string
