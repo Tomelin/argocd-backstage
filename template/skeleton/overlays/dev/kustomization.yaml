@@ -5,9 +5,12 @@ bases:
  {% if values.argocd %}
 - https://github.com/Tomelin/argocd-appProject/common
   {% endif %}
+   {% if values.enabledDB.database %}
+- https://github.com/Tomelin/argocd-appProject/common
+  {% endif %}
 
 patches:
-{% if values.argocd %}
+{%- if values.argocd %}
 # STARTS ArgoCD
 - target:
     kind: AppProject
@@ -38,4 +41,24 @@ patches:
 # END ArgoCD
   {% endif %}
 
-
+{%- if values.enabledDB.database %}
+# STARTS PostgreSQLServer
+- target:
+    kind: ResourceGroup
+    name: .*
+  patch: |-
+    - op: replace
+      path: /metadata/name
+      value: ${{values.project_name | dump}}
+- target:
+    kind: PostgreSQLServer
+    name: .*
+  patch: |-
+    - op: replace
+      path: /spec/forProvider/resourceGroupNameRef/name
+      value: ${{values.project_name | trim | dump}}
+    - op: replace
+      path: /metadata/name
+      value: ${{values.application_name | trim | dump}}
+# END PostgreSQLServer
+  {% endif %}
