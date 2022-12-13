@@ -11,7 +11,7 @@ spec:
   description: "ArgoCD project ${{ values.project_name }}"
   {% endif %}
   destinations:
-  - namespace: ${{values.namespace | dump}}
+  - namespace: ${{values.project_name | dump}}
     server: "*"  # cluster 
   namespaceResourceWhitelist:
     - group: "*"
