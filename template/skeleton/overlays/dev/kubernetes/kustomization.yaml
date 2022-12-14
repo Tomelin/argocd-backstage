@@ -99,4 +99,4 @@ patches:
       path: /spec/scaleTargetRef/name
       value: ${{values.application_name | dump}}      
 # END Microservice
-{%- if values.microservice %}
+{%- endif %}
