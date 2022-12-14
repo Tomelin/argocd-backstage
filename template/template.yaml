@@ -311,7 +311,7 @@ spec:
       action: fetch:template
       input:
         url: ./skeleton/conditional
-        targetPath: 
+        targetPaths: 
           - ./overlays/conditional
           - ./overlays/conditional2
         copyWithoutRender:
