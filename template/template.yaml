@@ -267,7 +267,7 @@ spec:
     - id: fetch-docs
       name: Fetch Docs
       if: ${{ parameters.microservice }}
-      action: fetch:template
+      action: fetch:plain
       input:
         targetPath: ./overlays/dev/kubernetes
         url: https://github.com/Tomelin/backstage-templates/blob/main/kuberntes/client
@@ -281,24 +281,7 @@ spec:
           repoUrl:        "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
           argocd:        ${{ parameters.argocd }}
           microservice:  ${{ parameters.microservice }}
-          
-    - id: fetch-docs2
-      name: Fetch Docs
-      if: ${{ parameters.microservice }}
-      action: fetch:template
-      input:
-        targetPath: ./overlays/dev/kubernetes
-        url: https://github.com/Tomelin/backstage-templates/blob/main/kuberntes/client
-      values:
-          project_name:   ${{ parameters.project_name | trim }}
-          application_name: ${{ parameters.application_name | trim}}
-          enabledDB:      ${{ parameters.enabledDB }}
-          description:    ${{ parameters.description }}
-          destination:    "https://github.com/${{ parameters.project_name }}/${{ parameters.application_name }}.git"
-          owner:          ${{ parameters.owner }}
-          repoUrl:        "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
-          argocd:        ${{ parameters.argocd }}
-          microservice:  ${{ parameters.microservice }}
+
     # - id: fetch-cache
     #   name: Fetch Cache
     #   if: ${{ parameters.enabledCache }}
