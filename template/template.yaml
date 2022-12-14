@@ -246,24 +246,24 @@ spec:
 #             allowedHosts:
 #               - github.com
   steps:
-    - id: template
-      name: Fetch Skeleton + Template
-      action: fetch:template
-      input:
-        url: ./skeleton
-        targetPath: ./app
-        copyWithoutRender:
-          - .github/workflows/*
-        values:
-          project_name:   ${{ parameters.project_name | trim }}
-          application_name: ${{ parameters.application_name | trim}}
-          enabledDB:      ${{ parameters.enabledDB }}
-          description:    ${{ parameters.description }}
-          destination:    "https://github.com/${{ parameters.project_name }}/${{ parameters.application_name }}.git"
-          owner:          ${{ parameters.owner }}
-          repoUrl:        "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
-          argocd:        ${{ parameters.argocd }}
-          microservice:  ${{ parameters.microservice }}
+#     - id: template
+#       name: Fetch Skeleton + Template
+#       action: fetch:template
+#       input:
+#         url: ./skeleton
+#         targetPath: ./app
+#         copyWithoutRender:
+#           - .github/workflows/*
+#         values:
+#           project_name:   ${{ parameters.project_name | trim }}
+#           application_name: ${{ parameters.application_name | trim}}
+#           enabledDB:      ${{ parameters.enabledDB }}
+#           description:    ${{ parameters.description }}
+#           destination:    "https://github.com/${{ parameters.project_name }}/${{ parameters.application_name }}.git"
+#           owner:          ${{ parameters.owner }}
+#           repoUrl:        "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
+#           argocd:        ${{ parameters.argocd }}
+#           microservice:  ${{ parameters.microservice }}
 
     - id: fetch-docs
       name: Fetch Docs
