@@ -23,11 +23,13 @@ spec:
           type: string
           description: Project name will use in Kubernetes namespace, ArgocD project, Git repository
           ui:field: EntityNamePicker
+          default: project001
         application_name:
           title: Name
           type: string
           description: Unique name of the application inside the project
           ui:field: EntityNamePicker
+          default: app001
         description:
           title: Description
           type: string
@@ -36,6 +38,7 @@ spec:
           title: Owner
           type: string
           description: Owner of the component
+          default: infrastructure
           ui:field: OwnerPicker
           ui:options:
             allowedKinds:
@@ -261,13 +264,13 @@ spec:
           argocd:        ${{ parameters.argocd }}
           microservice:  ${{ parameters.microservice }}
 
-    - id: fetch-docs
-      name: Fetch Docs
-      if: ${{ parameters.microservice }}
-      action: fetch:plain
-      input:
-        targetPath: ./deploy/kubernetes
-        url: https://github.com/Tomelin/backstage-templates/blob/main/kuberntes
+#     - id: fetch-docs
+#       name: Fetch Docs
+#       if: ${{ parameters.microservice }}
+#       action: fetch:plain
+#       input:
+#         targetPath: ./deploy/kubernetes
+#         url: https://github.com/Tomelin/backstage-templates/blob/main/kuberntes
     
     # - id: fetch-cache
     #   name: Fetch Cache
