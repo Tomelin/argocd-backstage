@@ -269,7 +269,7 @@ spec:
       if: ${{ parameters.microservice }}
       action: fetch:plain
       input:
-        targetPath: ./deploy/kubernetes
+        targetPath: ./overlays/dev/kubernetes
         url: https://github.com/Tomelin/backstage-templates/blob/main/kuberntes/client
     
     # - id: fetch-cache
