@@ -291,8 +291,8 @@ spec:
       if: ${{ parameters.register }}
       action: fetch:template
       input:
-        url: ./skeleton/overlays/dev/backstage
-        targetPath: ./overlays/dev/backstage
+        url: ./skeleton/backstage
+#         targetPath: ./
         copyWithoutRender:
           - .github/workflows/*
         values:
