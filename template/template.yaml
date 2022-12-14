@@ -321,6 +321,18 @@ spec:
         defaultBranch: main
         repoVisibility: public
 
+    - id: publish2
+      name: Publish2
+      if: ${{ parameters.argocd }}
+      action: publish:github
+      input:
+        sourcePath: ./temp
+        allowedHosts: ["github.com"]
+        description: This is ${{ parameters.project_name }}
+        repoUrl: "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
+        defaultBranch: main
+        repoVisibility: public
+
     - id: register
       name: Register
       if: ${{ parameters.register }}
