@@ -308,7 +308,6 @@ spec:
 
     - id: conditional
       name: Fetch Skeleton to conditional
-      if: ${{ parameters.register }}
       action: fetch:template
       input:
         url: ./skeleton/conditional
