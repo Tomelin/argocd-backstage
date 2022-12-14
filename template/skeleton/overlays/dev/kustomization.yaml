@@ -12,6 +12,35 @@ bases:
 - https://github.com/Tomelin/backstage-templates/kuberntes
  {%- endif %}
 
+transformers:
+  - |-
+    apiVersion: builtin
+    kind: LabelTransformer
+    metadata:
+      name: commonLabelsTransformer
+    labels:
+      app.kubernetes.io/name: ${{values.application_name | trim | dump}}
+      app.kubernetes.io/project: ${{values.project_name | trim | dump}}
+
+    fieldSpecs:
+    # Deployment
+    - path: metadata/labels
+      create: true
+      kind: Deployment
+    - path: spec/template/metadata/labels
+      create: true
+      kind: Deployment
+    # Service
+    - path: metadata/labels
+      create: true
+      kind: Service
+    - path: spec/selector
+      create: true
+      kind: Service
+    # HorizontalPodAutoscaler
+    - path: metadata/labels
+      create: true
+      kind: HorizontalPodAutoscaler
 
 patches:
 {%- if values.argocd %}
@@ -79,9 +108,6 @@ patches:
     - op: add
       path: /metadata/namespace
       value: ${{values.project_name | dump}}
-    - op: replace
-      path: /metadata/labels/app
-      value: ${{values.application_name | dump}}
 - target:
     kind: Service
     name: .*
@@ -91,13 +117,7 @@ patches:
       value: ${{values.application_name | dump}}
     - op: add
       path: /metadata/namespace
-      value: ${{values.project_name | dump}}
-    - op: replace
-      path: /metadata/labels/app
-      value: ${{values.application_name | dump}}
-    - op: replace
-      path: /spec/selector/apappp
-      value: ${{values.application_name | dump}}  
+      value: ${{values.project_name | dump}} 
 - target:
     kind: HorizontalPodAutoscaler
     name: .*
@@ -108,9 +128,6 @@ patches:
     - op: add
       path: /metadata/namespace
       value: ${{values.project_name | dump}}
-    - op: add
-      path: /metadata/labels/app
-      value: ${{values.application_name | dump}}
     - op: replace
       path: /spec/scaleTargetRef/name
       value: ${{values.application_name | dump}}      
