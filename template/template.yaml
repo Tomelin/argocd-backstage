@@ -271,8 +271,7 @@ spec:
       action: fetch:template
       input:
         targetPath: ./app/temp
-        url: /skeleton/delopy
-        #url: https://github.com/Tomelin/backstage-templates/blob/main/kuberntes/client
+        url: https://github.com/Tomelin/backstage-templates/blob/main/kuberntes/client
       values:
           project_name:   ${{ parameters.project_name | trim }}
           application_name: ${{ parameters.application_name | trim}}
