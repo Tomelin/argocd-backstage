@@ -289,20 +289,12 @@ spec:
       input:
         temp: ${{ parameters }}
         parameters: true
-        
-    - name: ResultsSpec
-      action: debug:log
-      input:
-        temp: ${{ spec.project_name }}
-        temp2: ${{ spec['project_name'].output }}
 
-    - name: Results
+    - name: ResultsFiles
       action: debug:log
       input:
         listWorkspace: true
-    - name: Results3
-      action: debug:log
-        
+
     - id: publish
       name: Publish
       if: ${{ parameters.argocd }}
@@ -314,18 +306,6 @@ spec:
         defaultBranch: main
         repoVisibility: public
 
-    - name: ResultOutput1
-      action: debug:log
-      input:
-        temp:  ${{ steps.publish.output.remoteUrl }}
-    - name: ResultOutput2
-      action: debug:log
-      input:
-        temp:  ${{ steps.publish.output }}
-    - name: ResultOutput3
-      action: debug:log
-      input:
-        temp:  ${{ steps.template.output }}
     - id: register
       name: Register
       if: ${{ parameters.register }}
@@ -333,7 +313,6 @@ spec:
       input:
         repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
         catalogInfoPath: "/catalog-info.yaml"
-
 
   output:
     links:
