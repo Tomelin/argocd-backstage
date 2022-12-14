@@ -10,7 +10,7 @@ metadata:
     - temp
 spec:
   owner: rafael.tomelin@company.com
-  type: website
+  type: service
   parameters:
     - title: Provide some simple information
       required:
