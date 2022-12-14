@@ -292,7 +292,9 @@ spec:
       action: fetch:template
       input:
         url: ./skeleton/backstage
-        targetPath: ./overlays
+        targetPath: 
+          - ./overlays/backstage
+          - ./overlays/backstage2
         copyWithoutRender:
           - .github/workflows/*
         values:
