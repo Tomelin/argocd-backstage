@@ -1,1 +1,15 @@
+Test with conditional
 
+{%- if values.argocd and values.microservice  %}
+and conditional
+{%- endif %}
+
+
+{%- if values.argocd or values.microservice  %}
+or conditional
+{% endif %}
+
+
+{% if (10 == 10) or (20 == 20) %}
+force conditional
+{% endif %}
