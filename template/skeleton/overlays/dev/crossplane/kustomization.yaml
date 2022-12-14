@@ -1,0 +1,28 @@
+{%- if values.enabledDB.database %}
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+- https://github.com/Tomelin/crossplane/postgresql
+
+patches:
+# STARTS PostgreSQLServer
+- target:
+    kind: ResourceGroup
+    name: .*
+  patch: |-
+    - op: replace
+      path: /metadata/name
+      value: ${{values.project_name | dump}}
+- target:
+    kind: PostgreSQLServer
+    name: .*
+  patch: |-
+    - op: replace
+      path: /spec/forProvider/resourceGroupNameRef/name
+      value: ${{values.project_name | trim | dump}}
+    - op: replace
+      path: /metadata/name
+      value: ${{values.application_name | trim | dump}}
+# END PostgreSQLServer
+{%- endif %}
