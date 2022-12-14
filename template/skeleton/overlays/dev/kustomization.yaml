@@ -4,13 +4,13 @@ kind: Kustomization
 bases:
  {%- if values.argocd %}
 - https://github.com/Tomelin/argocd-appProject/common
- {% endif %}
+ {%- endif %}
  {%- if values.enabledDB.database %}
 - https://github.com/Tomelin/crossplane/postgresql
- {% endif %}
- {%- if values.enabledDB.database %}
+ {%- endif %}
+ {%- if values.microservice %}
 - https://github.com/Tomelin/backstage-templates/kuberntes
- {% endif %}
+ {%- endif %}
 
 
 patches:
