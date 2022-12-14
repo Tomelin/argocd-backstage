@@ -8,6 +8,10 @@ bases:
  {%- if values.enabledDB.database %}
 - https://github.com/Tomelin/crossplane/postgresql
  {% endif %}
+ {%- if values.enabledDB.database %}
+- https://github.com/Tomelin/backstage-templates/kuberntes
+ {% endif %}
+
 
 patches:
 {%- if values.argocd %}
@@ -61,4 +65,54 @@ patches:
       path: /metadata/name
       value: ${{values.application_name | trim | dump}}
 # END PostgreSQLServer
+  {% endif %}
+
+{%- if values.microservice %}
+# STARTS Microservice
+- target:
+    kind: Deployment
+    name: .*
+  patch: |-
+    - op: replace
+      path: /metadata/name
+      value: ${{values.application_name | dump}}
+    - op: add
+      path: /metadata/namespace
+      value: ${{values.project_name | dump}}
+    - op: replace
+      path: /metadata/labels/app
+      value: ${{values.application_name | dump}}
+- target:
+    kind: Service
+    name: .*
+  patch: |-
+    - op: replace
+      path: /metadata/name
+      value: ${{values.application_name | dump}}
+    - op: add
+      path: /metadata/namespace
+      value: ${{values.project_name | dump}}
+    - op: replace
+      path: /metadata/labels/app
+      value: ${{values.application_name | dump}}
+    - op: replace
+      path: /spec/selector/apappp
+      value: ${{values.application_name | dump}}  
+- target:
+    kind: HorizontalPodAutoscaler
+    name: .*
+  patch: |-
+    - op: replace
+      path: /metadata/name
+      value: ${{values.application_name | dump}}
+    - op: add
+      path: /metadata/namespace
+      value: ${{values.project_name | dump}}
+    - op: add
+      path: /metadata/labels/app
+      value: ${{values.application_name | dump}}
+    - op: replace
+      path: /spec/scaleTargetRef/name
+      value: ${{values.application_name | dump}}      
+# END Microservice
   {% endif %}
