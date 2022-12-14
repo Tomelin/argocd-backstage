@@ -251,7 +251,7 @@ spec:
       action: fetch:template
       input:
         url: ./skeleton
-        targetPath: ./overlays
+        targetPath: ./app
         copyWithoutRender:
           - .github/workflows/*
         values:
@@ -314,7 +314,7 @@ spec:
       if: ${{ parameters.argocd }}
       action: publish:github
       input:
-        sourcePath: ./overlays
+        sourcePath: ./app
         allowedHosts: ["github.com"]
         description: This is ${{ parameters.project_name }}
         repoUrl: "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
