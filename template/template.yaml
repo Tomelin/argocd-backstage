@@ -250,7 +250,7 @@ spec:
       name: Fetch Skeleton + Template
       action: fetch:template
       input:
-        url: ./skeleton
+        url: ./skeleton/overlays
         targetPath: ./app
         copyWithoutRender:
           - .github/workflows/*
@@ -265,14 +265,15 @@ spec:
           argocd:        ${{ parameters.argocd }}
           microservice:  ${{ parameters.microservice }}
 
-    - id: fetch-docs
-      name: Fetch Docs
-      if: ${{ parameters.microservice }}
+    - id: template2
+      name: Fetch Skeleton + Template2
       action: fetch:template
       input:
+        url: ./skeleton/deploy
         targetPath: ./app/temp
-        url: https://github.com/Tomelin/backstage-templates/blob/main/kuberntes/client
-      values:
+        copyWithoutRender:
+          - .github/workflows/*
+        values:
           project_name:   ${{ parameters.project_name | trim }}
           application_name: ${{ parameters.application_name | trim}}
           enabledDB:      ${{ parameters.enabledDB }}
