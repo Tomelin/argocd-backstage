@@ -270,7 +270,7 @@ spec:
       action: fetch:template
       input:
         url: ./skeleton/overlays/dev/kubernetes
-        targetPath: ./overlays/temp
+        targetPath: ./overlays/dev/kubernetes
         copyWithoutRender:
           - .github/workflows/*
         values:
