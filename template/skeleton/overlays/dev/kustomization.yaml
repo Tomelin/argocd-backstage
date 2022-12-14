@@ -30,6 +30,9 @@ transformers:
     - path: spec/template/metadata/labels
       create: true
       kind: Deployment
+    - path: spec/selector/matchLabels
+      create: true
+      kind: Deployment
     # Service
     - path: metadata/labels
       create: true
