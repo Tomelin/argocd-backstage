@@ -311,9 +311,7 @@ spec:
       action: fetch:template
       input:
         url: ./skeleton/conditional
-        targetPaths: 
-          - ./overlays/conditional
-          - ./overlays/conditional2
+        targetPath: ./overlays
         copyWithoutRender:
           - .github/workflows/*
         values:
