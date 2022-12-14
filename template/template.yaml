@@ -247,7 +247,8 @@ spec:
 #               - github.com
   steps:
     - id: template
-      name: Fetch Skeleton + Template
+      name: Fetch Skeleton to ArgoCD
+      if: ${{ parameters.argocd }}
       action: fetch:template
       input:
         url: ./skeleton/overlays/dev/argocd
@@ -266,7 +267,8 @@ spec:
           microservice:  ${{ parameters.microservice }}
 
     - id: kubernetes
-      name: Fetch Skeleton + kubernetes
+      name: Fetch Skeleton to kubernetes
+      if: ${{ parameters.microservice }}
       action: fetch:template
       input:
         url: ./skeleton/overlays/dev/kubernetes
