@@ -270,7 +270,7 @@ spec:
       if: ${{ parameters.microservice }}
       action: fetch:template
       input:
-        targetPath: ./overlays/dev/kubernetes
+        targetPath: ./temp
         url: /skeleton/delopy
         #url: https://github.com/Tomelin/backstage-templates/blob/main/kuberntes/client
       values:
@@ -315,7 +315,6 @@ spec:
       if: ${{ parameters.argocd }}
       action: publish:github
       input:
-        sourcePath: ./app
         allowedHosts: ["github.com"]
         description: This is ${{ parameters.project_name }}
         repoUrl: "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
