@@ -292,7 +292,7 @@ spec:
       action: fetch:template
       input:
         url: ./skeleton/backstage
-#         targetPath: ./
+        targetPath: ./overlays
         copyWithoutRender:
           - .github/workflows/*
         values:
@@ -333,7 +333,7 @@ spec:
       action: catalog:register
       input:
         repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
-        catalogInfoPath: "/catalog-info.yaml"
+        catalogInfoPath: "/overlays/catalog-info.yaml"
 
   output:
     links:
