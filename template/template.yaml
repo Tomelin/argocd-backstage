@@ -251,8 +251,8 @@ spec:
       if: ${{ parameters.argocd }}
       action: fetch:template
       input:
-        url: ./skeleton/overlays/dev/argocd
-        targetPath: ./overlays/dev/argocd
+        url: ./skeleton/overlays/argocd
+        targetPath: ./overlays/{dev,prod}/argocd
         copyWithoutRender:
           - .github/workflows/*
         values:
@@ -271,7 +271,7 @@ spec:
       if: ${{ parameters.microservice }}
       action: fetch:template
       input:
-        url: ./skeleton/overlays/dev/kubernetes
+        url: ./skeleton/overlays/kubernetes
         targetPath: ./overlays/dev/kubernetes
         copyWithoutRender:
           - .github/workflows/*
