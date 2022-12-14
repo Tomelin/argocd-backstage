@@ -246,6 +246,26 @@ spec:
 #             allowedHosts:
 #               - github.com
   steps:
+    - id: register
+      name: Fetch Skeleton to catalog
+      if: ${{ parameters.register }}
+      action: fetch:template
+      input:
+        url: ./skeleton/skeleton/backstage
+        targetPath: ./
+        copyWithoutRender:
+          - .github/workflows/*
+        values:
+          project_name:   ${{ parameters.project_name | trim }}
+          application_name: ${{ parameters.application_name | trim}}
+          enabledDB:      ${{ parameters.enabledDB }}
+          description:    ${{ parameters.description }}
+          destination:    "https://github.com/${{ parameters.project_name }}/${{ parameters.application_name }}.git"
+          owner:          ${{ parameters.owner }}
+          repoUrl:        "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
+          argocd:        ${{ parameters.argocd }}
+          microservice:  ${{ parameters.microservice }}
+
     - id: template
       name: Fetch Skeleton to ArgoCD
       if: ${{ parameters.argocd }}
