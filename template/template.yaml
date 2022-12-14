@@ -299,7 +299,6 @@ spec:
 
     - id: publish
       name: Publish
-      if: ${{ parameters.argocd }}
       action: publish:github
       input:
         allowedHosts: ["github.com"]
