@@ -314,7 +314,18 @@ spec:
         defaultBranch: main
         repoVisibility: public
 
-
+    - name: ResultOutput1
+      action: debug:log
+      input:
+        temp:  ${{ steps.publish.output.remoteUrl }}
+    - name: ResultOutput2
+      action: debug:log
+      input:
+        temp:  ${{ steps.publish.output }}
+    - name: ResultOutput3
+      action: debug:log
+      input:
+        temp:  ${{ steps.template.output }}
     - id: register
       name: Register
       if: ${{ parameters.register }}
