@@ -259,6 +259,7 @@ spec:
           owner:          ${{ parameters.owner }}
           repoUrl:        "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
           argocd:        ${{ parameters.argocd }}
+          microservice:  ${{ parameters.microservice }}
 
 #     - id: fetch-docs
 #       name: Fetch Docs
