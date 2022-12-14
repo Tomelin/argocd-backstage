@@ -252,7 +252,6 @@ spec:
       action: fetch:template
       input:
         url: ./skeleton/skeleton/backstage
-        targetPath: ./
         copyWithoutRender:
           - .github/workflows/*
         values:
