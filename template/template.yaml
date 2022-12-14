@@ -292,9 +292,7 @@ spec:
       action: fetch:template
       input:
         url: ./skeleton/backstage
-        targetPath: 
-          - ./overlays/backstage
-          - ./overlays/backstage2
+        targetPath: ./overlays/backstage
         copyWithoutRender:
           - .github/workflows/*
         values:
@@ -313,7 +311,9 @@ spec:
       action: fetch:template
       input:
         url: ./skeleton/conditional
-        targetPath: ./overlays
+        targetPath: 
+          - ./overlays/conditional
+          - ./overlays/conditional2
         copyWithoutRender:
           - .github/workflows/*
         values:
