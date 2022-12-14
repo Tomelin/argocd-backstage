@@ -260,13 +260,13 @@ spec:
           repoUrl:        "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
           argocd:        ${{ parameters.argocd }}
 
-    - id: fetch-docs
-      name: Fetch Docs
-      if: ${{ parameters.microservice }}
-      action: fetch:plain
-      input:
-        targetPath: ./deploy/kubernetes
-        url: https://github.com/Tomelin/backstage-templates/blob/main/kuberntes
+#     - id: fetch-docs
+#       name: Fetch Docs
+#       if: ${{ parameters.microservice }}
+#       action: fetch:plain
+#       input:
+#         targetPath: ./deploy/kubernetes
+#         url: https://github.com/Tomelin/backstage-templates/blob/main/kuberntes
     
     # - id: fetch-cache
     #   name: Fetch Cache
