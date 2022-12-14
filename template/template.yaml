@@ -250,8 +250,8 @@ spec:
       name: Fetch Skeleton + Template
       action: fetch:template
       input:
-        url: ./skeleton/overlays
-        targetPath: ./app
+        url: ./skeleton/overlays/dev/argocd
+        targetPath: ./overlays/dev/argocd
         copyWithoutRender:
           - .github/workflows/*
         values:
@@ -265,12 +265,12 @@ spec:
           argocd:        ${{ parameters.argocd }}
           microservice:  ${{ parameters.microservice }}
 
-    - id: template2
-      name: Fetch Skeleton + Template2
+    - id: kubernetes
+      name: Fetch Skeleton + kubernetes
       action: fetch:template
       input:
-        url: ./skeleton/deploy
-        targetPath: ./app/temp
+        url: ./skeleton/overlays/dev/kubernetes
+        targetPath: ./overlays/dev/kubernetes
         copyWithoutRender:
           - .github/workflows/*
         values:
@@ -284,21 +284,6 @@ spec:
           argocd:        ${{ parameters.argocd }}
           microservice:  ${{ parameters.microservice }}
 
-    # - id: fetch-cache
-    #   name: Fetch Cache
-    #   if: ${{ parameters.enabledCache }}
-    #   action: fetch:plain
-    #   input:
-    #     targetPath: ./deploy/kubernetes
-    #     url: https://github.com/Tomelin/argocd-backstage/blob/main
-
-    # - id: fetch-Kube
-    #   name: Fetch Kube
-    #   if: ${{ parameters.enabledCache }}
-    #   action: fetch:plain
-    #   input:
-    #     targetPath: ./deploy/kubernetes
-    #     url: https://github.com/Tomelin/argocd-appProject/tree/main/kubernetes
     - name: ResultsParameters
       action: debug:log
       input:
