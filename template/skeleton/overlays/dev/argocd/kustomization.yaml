@@ -1,13 +1,11 @@
+{%- if values.argocd %}
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 bases:
- {%- if values.argocd %}
 - https://github.com/Tomelin/argocd-appProject/common
- {%- endif %}
 
 patches:
-{%- if values.argocd %}
 # STARTS ArgoCD
 - target:
     kind: AppProject
@@ -36,4 +34,4 @@ patches:
       path: /spec/source/repoURL
       value: https://github.com/${{ values.project_name }}/${{ values.application_name }}.git
 # END ArgoCD
-  {% endif %}
+{%- endif %}
