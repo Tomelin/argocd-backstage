@@ -251,7 +251,7 @@ spec:
       action: fetch:template
       input:
         url: ./skeleton/overlays/dev/argocd
-        targetPath: ./overlays
+        targetPath: ./overlays/dev/argocd
         copyWithoutRender:
           - .github/workflows/*
         values:
