@@ -52,6 +52,12 @@ spec:
           description: Enable ArgoCD files?
           ui:widget: checkbox
           default: true
+        microservice:
+          title: Microservice
+          type: boolean
+          description: Enable microservice files?
+          ui:widget: checkbox
+          default: true
     - title: Azure Resources
       properties:
         enabledSTA:
@@ -254,13 +260,13 @@ spec:
           repoUrl:        "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
           argocd:        ${{ parameters.argocd }}
 
-    # - id: fetch-docs
-    #   name: Fetch Docs
-    #   if: ${{ parameters.enabledDB.database }}
-    #   action: fetch:plain
-    #   input:
-    #     targetPath: ./deploy/argocd
-    #     url: https://github.com/backstage/community/blob/main/backstage-community-sessions
+    - id: fetch-docs
+      name: Fetch Docs
+      if: ${{ parameters.microservice }}
+      action: fetch:plain
+      input:
+        targetPath: ./deploy/kubernetes
+        url: https://github.com/Tomelin/backstage-templates/blob/main/kuberntes
     
     # - id: fetch-cache
     #   name: Fetch Cache
