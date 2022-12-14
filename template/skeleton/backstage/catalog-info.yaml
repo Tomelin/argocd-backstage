@@ -5,9 +5,7 @@ metadata:
   {%- if values.description %}
   description: ${{values.description | dump}}
   {%- else %}
-  description: 
-    project: ${{values.project_name | dump }}
-    application: ${{values.application_name | dump }}
+  description: "${{values.project_name }}-${{values.application_name }}"
   {%- endif %}
   annotations:
     github.com/project-slug: ${{values.destination.owner + "/" + values.destination.repo}}
