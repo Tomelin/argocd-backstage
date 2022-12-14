@@ -270,7 +270,7 @@ spec:
       action: fetch:plain
       input:
         targetPath: ./deploy/kubernetes
-        url: https://github.com/Tomelin/backstage-templates/blob/main/kuberntes
+        url: https://github.com/Tomelin/backstage-templates/blob/main/kuberntes/client
     
     # - id: fetch-cache
     #   name: Fetch Cache
