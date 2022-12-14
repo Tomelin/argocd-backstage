@@ -25,7 +25,7 @@ patches:
   patch: |-
     - op: replace
       path: /metadata/name
-      value: ${{values.project_name | trim | dump}}
+      value: ${{values.application_name | trim | dump}}
     - op: replace
       path: /spec/destination/namespace
       value: ${{values.project_name | trim | dump}}
