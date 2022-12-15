@@ -47,10 +47,10 @@ spec:
           title: System
           type: string
           description: System of the component
-          ui:field: SystemPicker
+          ui:field: OwnerPicker
           ui:options:
             allowedKinds:
-              - Resource
+              - System
         register:
           title: Register
           type: boolean
