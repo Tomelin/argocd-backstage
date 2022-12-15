@@ -43,6 +43,13 @@ spec:
           ui:options:
             allowedKinds:
               - Group
+        system:
+          title: System
+          type: string
+          description: System of the component
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
               - System
         register:
           title: Register
