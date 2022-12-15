@@ -51,6 +51,13 @@ spec:
           ui:options:
             allowedKinds:
               - System
+        system2:
+          title: System2
+          type: string
+          description: System of the component
+          enum:
+            allowedKinds:
+              - System
         register:
           title: Register
           type: boolean
