@@ -51,15 +51,6 @@ spec:
           ui:options:
             allowedKinds:
               - System
-        system2:
-          title: System2
-          type: string
-          description: System of the component
-          ui:field: OwnerPicker
-          ui:options:
-            allowedKinds:
-              - System
-              - Lifecycle
         register:
           title: Register
           type: boolean
