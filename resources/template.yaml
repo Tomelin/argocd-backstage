@@ -17,19 +17,19 @@ spec:
   type: database
   owner: owner-relations-team
   system: nova
----
-apiVersion: backstage.io/v1alpha1
-kind: Domain
-metadata:
-  name: nova
-  description: Everything about nova
-spec:
-  owner: owner-relations-team
----
-apiVersion: backstage.io/v1alpha1
-kind: Domain
-metadata:
-  name: payments
-  description: Everything about payments
-spec:
-  owner: owner-relations-team
+# ---
+# apiVersion: backstage.io/v1alpha1
+# kind: Domain
+# metadata:
+#   name: nova
+#   description: Everything about nova
+# spec:
+#   owner: owner-relations-team
+# ---
+# apiVersion: backstage.io/v1alpha1
+# kind: Domain
+# metadata:
+#   name: payments
+#   description: Everything about payments
+# spec:
+#   owner: owner-relations-team
