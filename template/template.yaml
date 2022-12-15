@@ -55,9 +55,11 @@ spec:
           title: System2
           type: string
           description: System of the component
-          enum:
+          ui:field: OwnerPicker
+          ui:options:
             allowedKinds:
               - System
+              - Lifecycle
         register:
           title: Register
           type: boolean
