@@ -47,7 +47,7 @@ spec:
           title: System
           type: string
           description: System of the component
-          ui:field: OwnerPicker
+          ui:field: SystemPicker
           ui:options:
             allowedKinds:
               - Resource
