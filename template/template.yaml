@@ -252,7 +252,7 @@ spec:
       action: fetch:template
       input:
         url: ./skeleton/overlays/argocd
-        targetPath: ./overlays/dev/argocd
+        targetPath: ./deploy/overlays/dev/argocd
         copyWithoutRender:
           - .github/workflows/*
         values:
@@ -272,7 +272,7 @@ spec:
       action: fetch:template
       input:
         url: ./skeleton/overlays/kubernetes
-        targetPath: ./overlays/dev/kubernetes
+        targetPath: ./deploy/overlays/dev/kubernetes
         copyWithoutRender:
           - .github/workflows/*
         values:
@@ -292,7 +292,7 @@ spec:
       action: fetch:template
       input:
         url: ./skeleton/backstage
-        targetPath: ./overlays/backstage
+        targetPath: ./deploy/backstage
         copyWithoutRender:
           - .github/workflows/*
         values:
@@ -311,7 +311,7 @@ spec:
       action: fetch:template
       input:
         url: ./skeleton/conditional
-        targetPath: ./overlays
+        targetPath: ./deploy/overlays
         copyWithoutRender:
           - .github/workflows/*
         values:
@@ -352,7 +352,7 @@ spec:
       action: catalog:register
       input:
         repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
-        catalogInfoPath: "/overlays/catalog-info.yaml"
+        catalogInfoPath: "/deploy/catalog-info.yaml"
 
   output:
     links:
