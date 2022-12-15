@@ -29,19 +29,19 @@ spec:
   owner: owner-relations-team
   system: nova
 ---
-apiVersion: backstage.io/v1alpha1
+apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: reosurces-template
-  title: Resources Template to structure
-  description: Create a git repository with ArgoCD and Azure Resoucres files
+  name: tomelin-template
+  title: Example a simple Template2
+  description: Create a git repository with ArgoCD files
   tags:
-    - infrastructure
-    - azure
-    - resources
+    - recommended
+    - react
+    - temp
 spec:
   owner: rafael.tomelin@company.com
-  type: website
+  type: service
   parameters:
     - title: Provide some simple information
       required:
@@ -73,11 +73,31 @@ spec:
           ui:field: OwnerPicker
           ui:options:
             allowedKinds:
-              - Group        
+              - Group
+        system:
+          title: System
+          type: string
+          description: System of the component
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - System
         register:
           title: Register
           type: boolean
           description: Register the component in Backstage?
+          ui:widget: checkbox
+          default: true
+        argocd:
+          title: ArgoCD
+          type: boolean
+          description: Enable ArgoCD files?
+          ui:widget: checkbox
+          default: true
+        microservice:
+          title: Microservice
+          type: boolean
+          description: Enable microservice files?
           ui:widget: checkbox
           default: true
     - title: Azure Resources
@@ -252,6 +272,18 @@ spec:
                   required: 
                     - queue version
 
+#     - title: Choose a location
+#       required:
+#         - repoUrl
+#       properties:
+#         repoUrl:
+#           title: Repository Location
+#           default: github.com?repo=${{ parameters.project_name | trim }}&workspace=workspace&project=myproject
+#           type: string
+#           ui:field: RepoUrlPicker
+#           ui:options:
+#             allowedHosts:
+#               - github.com
   steps:
     - id: template
       name: Fetch Skeleton to ArgoCD
@@ -260,6 +292,26 @@ spec:
       input:
         url: ./skeleton/overlays/argocd
         targetPath: ./deploy/overlays/dev/argocd
+        copyWithoutRender:
+          - .github/workflows/*
+        values:
+          project_name:   ${{ parameters.project_name | trim }}
+          application_name: ${{ parameters.application_name | trim}}
+          enabledDB:      ${{ parameters.enabledDB }}
+          description:    ${{ parameters.description }}
+          destination:    "https://github.com/${{ parameters.project_name }}/${{ parameters.application_name }}.git"
+          owner:          ${{ parameters.owner }}
+          repoUrl:        "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
+          argocd:        ${{ parameters.argocd }}
+          microservice:  ${{ parameters.microservice }}
+
+    - id: kubernetes
+      name: Fetch Skeleton to kubernetes
+      if: ${{ parameters.microservice }}
+      action: fetch:template
+      input:
+        url: ./skeleton/overlays/kubernetes
+        targetPath: ./deploy/overlays/dev/kubernetes
         copyWithoutRender:
           - .github/workflows/*
         values:
@@ -292,6 +344,36 @@ spec:
           repoUrl:        "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
           argocd:        ${{ parameters.argocd }}
           microservice:  ${{ parameters.microservice }}
+
+    - id: conditional
+      name: Fetch Skeleton to conditional
+      action: fetch:template
+      input:
+        url: ./skeleton/conditional
+        targetPath: ./deploy/overlays
+        copyWithoutRender:
+          - .github/workflows/*
+        values:
+          project_name:   ${{ parameters.project_name | trim }}
+          application_name: ${{ parameters.application_name | trim}}
+          enabledDB:      ${{ parameters.enabledDB }}
+          description:    ${{ parameters.description }}
+          destination:    "https://github.com/${{ parameters.project_name }}/${{ parameters.application_name }}.git"
+          owner:          ${{ parameters.owner }}
+          repoUrl:        "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
+          argocd:        ${{ parameters.argocd }}
+          microservice:  ${{ parameters.microservice }}
+          
+    - name: ResultsParameters
+      action: debug:log
+      input:
+        temp: ${{ parameters }}
+        parameters: true
+
+    - name: ResultsFiles
+      action: debug:log
+      input:
+        listWorkspace: true
 
     - id: publish
       name: Publish
