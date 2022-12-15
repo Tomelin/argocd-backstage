@@ -50,7 +50,7 @@ spec:
           ui:field: OwnerPicker
           ui:options:
             allowedKinds:
-              - Resources
+              - Resource
         register:
           title: Register
           type: boolean
