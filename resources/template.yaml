@@ -17,14 +17,3 @@ spec:
   type: database
   owner: owner-relations-team
   system: nova
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: nova-web
-  description: The place to be, for great artists
-spec:
-  type: website
-  lifecycle: production
-  owner: owner-relations-team
-  system: nova
