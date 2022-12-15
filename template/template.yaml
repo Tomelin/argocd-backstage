@@ -273,6 +273,7 @@ spec:
           repoUrl:        "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
           argocd:        ${{ parameters.argocd }}
           microservice:  ${{ parameters.microservice }}
+          system:  ${{ parameters.system }}
 
     - id: kubernetes
       name: Fetch Skeleton to kubernetes
@@ -293,6 +294,7 @@ spec:
           repoUrl:        "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
           argocd:        ${{ parameters.argocd }}
           microservice:  ${{ parameters.microservice }}
+          system:  ${{ parameters.system }}
 
     - id: backstage
       name: Fetch Skeleton to backstage
@@ -313,6 +315,7 @@ spec:
           repoUrl:        "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
           argocd:        ${{ parameters.argocd }}
           microservice:  ${{ parameters.microservice }}
+          system:  ${{ parameters.system }}
 
     - id: conditional
       name: Fetch Skeleton to conditional
@@ -332,6 +335,7 @@ spec:
           repoUrl:        "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
           argocd:        ${{ parameters.argocd }}
           microservice:  ${{ parameters.microservice }}
+          system:  ${{ parameters.system }}
           
     - name: ResultsParameters
       action: debug:log
