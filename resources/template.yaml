@@ -1,0 +1,289 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: reosurces-template
+  title: Resources Template to structure
+  description: Create a git repository with ArgoCD and Azure Resoucres files
+  tags:
+    - infrastructure
+    - azure
+    - resources
+spec:
+  owner: rafael.tomelin@company.com
+  type: service
+  parameters:
+    - title: Provide some simple information
+      required:
+        - project_name
+        - application_name
+        - owner
+      properties:
+        project_name:
+          title: Name
+          type: string
+          description: Project name will use in Kubernetes namespace, ArgocD project, Git repository
+          ui:field: EntityNamePicker
+          default: project001
+        application_name:
+          title: Name
+          type: string
+          description: Unique name of the application inside the project
+          ui:field: EntityNamePicker
+          default: app001
+        description:
+          title: Description
+          type: string
+          description: Help others understand what this application is for.
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the component
+          default: infrastructure
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group        
+        register:
+          title: Register
+          type: boolean
+          description: Register the component in Backstage?
+          ui:widget: checkbox
+          default: true
+    - title: Azure Resources
+      properties:
+        enabledSTA:
+          title: Enable Storage
+          description: Enable storage in your application.
+          type: object
+          properties:
+            storage:
+              type: boolean
+              default: false
+          dependencies:
+            storage:
+              oneOf:
+                - properties:
+                    storage:
+                      enum:
+                        - false
+                - properties:
+                    storage:
+                      enum:
+                        - true
+                    storage version:
+                      type: "string"
+                      description: Choose the Storage Account tier
+                      default: v1
+                      enum:
+                        - v1
+                        - v2
+                  required: 
+                    - storage version
+        enabledDB:
+          title: Enable Database
+          description: Enable database in your application.
+          type: object
+          properties:
+            database:
+              type: boolean
+              default: false
+          dependencies:
+            database:
+              oneOf:
+                - properties:
+                    database:
+                      enum:
+                        - false
+                - properties:
+                    database:
+                      enum:
+                        - true
+                    databaseKind:
+                      type: "string"
+                      description: Choose the Database type
+                      default: PostgreSQL
+                      enum:
+                        - MySQL
+                        - PostgreSQL
+                        - MSSQL
+                        - MongoDB
+                  required: 
+                    - databaseKind
+                  dependencies:
+                    databaseKind:
+                      oneOf:
+                        - properties: 
+                            databaseKind:
+                              enum:
+                                - PostgreSQL
+                            databaseVersion:
+                              type: "string"
+                              description: Choose the Database version
+                              default: "11"
+                              enum:
+                                - "11"
+                                - "10"
+                        - properties:
+                            databaseKind:
+                              enum:
+                                - MySQL
+                            databaseVersion:
+                              type: "string"
+                              description: Choose the Database version
+                              default: "5.6"
+                              enum:
+                                - "5.6"
+                                - "5.7"
+                                - "8.0"
+                        - properties:
+                            databaseKind:
+                              enum:
+                                - MSSQL
+                            databaseVersion:
+                              type: "string"
+                              description: Choose the Database version
+                              default: "2019"
+                              enum:
+                                - "2008R2"
+                                - "2012"
+                                - "2014"
+                                - "2016"
+                                - "2017"
+                                - "2019"
+                        - properties:
+                            databaseKind:
+                              enum:
+                                - MongoDB
+                            databaseVersion:
+                              type: "string"
+                              description: Choose the Database version
+                              default: "4.0"
+                              enum:
+                                - "3.2"
+                                - "3.6"
+                                - "4.0"
+                                - "4.2"
+        enabledAKV:
+          title: Enable Key Vault
+          description: Enable key vault in your application.
+          type: object
+          properties:
+            vault:
+              type: boolean
+              default: false
+          dependencies:
+            vault:
+              oneOf:
+                - properties:
+                    vault:
+                      enum:
+                        - false
+                - properties:
+                    vault:
+                      enum:
+                        - true
+                    vault version:
+                      type: "string"
+                      description: Choose the Key Vault tier
+                      default: v1
+                      enum:
+                        - v1
+                        - v2
+                  required: 
+                    - vault version
+
+        enabledQueue:
+          title: Enable Message Queue
+          description: Enable message queue in your application.
+          type: object
+          properties:
+            queue:
+              type: boolean
+              default: false
+          dependencies:
+            queue:
+              oneOf:
+                - properties:
+                    queue:
+                      enum:
+                        - false
+                - properties:
+                    queue:
+                      enum:
+                        - true
+                    queue version:
+                      type: "string"
+                      description: Choose the message queue tier
+                      default: v1
+                      enum:
+                        - v1
+                        - v2
+                  required: 
+                    - queue version
+
+  steps:
+    - id: template
+      name: Fetch Skeleton to ArgoCD
+      if: ${{ parameters.argocd }}
+      action: fetch:template
+      input:
+        url: ./skeleton/overlays/argocd
+        targetPath: ./deploy/overlays/dev/argocd
+        copyWithoutRender:
+          - .github/workflows/*
+        values:
+          project_name:   ${{ parameters.project_name | trim }}
+          application_name: ${{ parameters.application_name | trim}}
+          enabledDB:      ${{ parameters.enabledDB }}
+          description:    ${{ parameters.description }}
+          destination:    "https://github.com/${{ parameters.project_name }}/${{ parameters.application_name }}.git"
+          owner:          ${{ parameters.owner }}
+          repoUrl:        "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
+          argocd:        ${{ parameters.argocd }}
+          microservice:  ${{ parameters.microservice }}
+
+    - id: backstage
+      name: Fetch Skeleton to backstage
+      if: ${{ parameters.register }}
+      action: fetch:template
+      input:
+        url: ./skeleton/backstage
+        targetPath: ./deploy/backstage
+        copyWithoutRender:
+          - .github/workflows/*
+        values:
+          project_name:   ${{ parameters.project_name | trim }}
+          application_name: ${{ parameters.application_name | trim}}
+          enabledDB:      ${{ parameters.enabledDB }}
+          description:    ${{ parameters.description }}
+          destination:    "https://github.com/${{ parameters.project_name }}/${{ parameters.application_name }}.git"
+          owner:          ${{ parameters.owner }}
+          repoUrl:        "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
+          argocd:        ${{ parameters.argocd }}
+          microservice:  ${{ parameters.microservice }}
+
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        allowedHosts: ["github.com"]
+        description: This is ${{ parameters.project_name }}
+        repoUrl: "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
+        defaultBranch: main
+        repoVisibility: public
+
+    - id: register
+      name: Register
+      if: ${{ parameters.register }}
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: "/deploy/catalog-info.yaml"
+
+  output:
+    links:
+      - title: Repository
+        url: ${{ steps.publish.output.remoteUrl }}
+      - title: Open in catalog
+        icon: catalog
+        entityRef: ${{ steps.register.output.entityRef }}
