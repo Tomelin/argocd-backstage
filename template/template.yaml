@@ -315,7 +315,7 @@ spec:
           repoUrl:        "github.com?owner=${{ parameters.owner }}&repo=${{ parameters.application_name }}&workspace=workspace&project=${{ parameters.project_name }}"
           argocd:        ${{ parameters.argocd }}
           microservice:  ${{ parameters.microservice }}
-          system:  ${{ parameters.system|replace(':',': ') }}
+          system:  ${{ parameters.system }}
 
     - id: conditional
       name: Fetch Skeleton to conditional
