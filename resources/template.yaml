@@ -29,7 +29,7 @@ spec:
   owner: owner-relations-team
   system: nova
 ---
-apiVersion: scaffolder.backstage.io/v1beta3
+apiVersion: backstage.io/v1alpha1
 kind: Template
 metadata:
   name: reosurces-template
@@ -41,7 +41,7 @@ metadata:
     - resources
 spec:
   owner: rafael.tomelin@company.com
-  type: service
+  type: website
   parameters:
     - title: Provide some simple information
       required:
