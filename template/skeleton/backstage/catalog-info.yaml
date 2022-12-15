@@ -14,5 +14,5 @@ spec:
   type: service
   lifecycle: experimental
   owner: ${{values.owner | dump}}
-  system: nova
+  system: ${{values.system | replace('system:','') | dump}}
  
